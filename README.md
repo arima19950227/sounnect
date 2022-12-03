@@ -1,18 +1,42 @@
-サイト名
- saunnect
+# Sounnect
 
-サイト概要
-サイトのテーマ：サウナのレビューを閲覧・投稿したり、サウナ好きで繋がりコミュニケーションが取れるサイト
+## サイト概要
+### サイトテーマ
+ サウナの詳細な情報の確認やレビューをすることができ、サウナ好き同士でコミュニケーションもとることができるサイト。
 
-テーマを選んだ理由：もともとサウナが好きで、どこに行くかを調べる際に細かな情報がなかなか出てこなかったので、サウナという分野に特化したサイトがあれば
-便利だと感じたところと、サウナ好き同士でコミュニケーションが図れるようなサイトがあれば面白そうだと思ったため
+ - サウナに特化したレビューができるレビューサイトです。
 
-ターゲットユーザー：サウナが好きな人
+### テーマを選んだ理由
+ もともとサウナが好きでよくサウナに行くのですが、行く前にサウナ施設の情報をインターネットで調べる際.
+ サウナ好きとして知りたい細かな情報をなかなか調べることができなかったので、サウナ好きならではの.
+ サウナに特化した情報があれば便利だと思いました。
+ それに伴い、レビューに関しても、ただ感想を投稿するのでなはくレビューを行う人がサウナ施設の詳細な情報も入力していただくこと.
+ によって、よりリアルなレビューを見ることができ参考になると思いました。
 
-主な利用シーン：サウナ好きで仲良くしたいと思っている人。サウナの細かなレビューができる。サウナのわかりやすい情報が見れる。
+### ターゲットユーザ
+- サウナが好きで、より詳細な情報がみたい人。
+- 行ったサウナについて記録として残しておきたい人。
+- サウナを通じて人とのコミュニケーションを図りたい人。
 
-ER図：https://app.diagrams.net/#G15IMEunk0eyHzyhw_z3TdRv_umZQ2_JsT
+### 主な利用シーン
+- サウナの細かな情報を確認したい時
+- サウナのレビューや評価を確認したい時
+- サウナが好きな人と仲良くしたいと思った時
 
-テーブル定義書：https://docs.google.com/spreadsheets/d/1HP6R-KSgZjMxV5KM45EwixFPzZ4NM2GijfezXQFx2k8/edit#gid=1478924533
+## 設計書
+- ER図.
+ https://app.diagrams.net/#G15IMEunk0eyHzyhw_z3TdRv_umZQ2_JsT.
 
-アプリケーション詳細設計書：https://docs.google.com/spreadsheets/d/1v8-tD8ZAHH2YXJMdFPhPw5wfPW_PVvp_P7sXQmO2PyU/edit#gid=549108681
+- テーブル定義書.
+ https://docs.google.com/spreadsheets/d/1HP6R-KSgZjMxV5KM45EwixFPzZ4NM2GijfezXQFx2k8/edit#gid=1478924533.
+
+- アプリケーション詳細設計書.
+ https://docs.google.com/spreadsheets/d/1v8-tD8ZAHH2YXJMdFPhPw5wfPW_PVvp_P7sXQmO2PyU/edit#gid=549108681
+
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+
