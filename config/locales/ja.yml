@@ -1,0 +1,44 @@
+ja:
+  enums:
+    review:
+      sauna_area:
+        small: "狭い"
+        usually: "普通"
+        wide: "広い"
+      sauna_temperature:
+        cold: "〜40℃"
+        mild: "65℃〜70℃"
+        usually: "80℃〜90℃"
+        hot: "100℃以上"
+      loryu_type:
+        auto: "オートロウリュ"
+        normal: "セルフロウリュ"
+        nothing: "なし"
+      aufguss:
+        having: "あり"
+        nothing: "なし"
+      water_temperature:
+        hot: "18℃〜24℃"
+        usually: "11℃〜17℃"
+        cold: "10℃以下"
+      water_area:
+        small: "狭い"
+        usually: "普通"
+        wide: "広い"
+      chair_count:
+        few: "0〜1個"
+        usually: "2〜4個"
+        many: "5個以上"
+      sauna_time:
+        weekdaymorning: "平日の朝"
+        weekdaynoon: "平日の昼"
+        weekdaynight: "平日の夜"
+        holidaymorning: "土・日・祝の朝"
+        holidaynoon: "土・日・祝の昼"
+        holidaynight: "土・日・祝の夜"
+      congestion:
+        veryfew: "かなり少ない"
+        few: "少ない"
+        usually: "普通"
+        many: "多い"
+        verymany: "かなり多い"
