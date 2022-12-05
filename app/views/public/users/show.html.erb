@@ -1,2 +1,7 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<h1>マイページ</h1>
+<p><%= image_tag @user.get_profile_image(100,100) %></p>
+<p>ユーザー名</p>
+<p><%= @user.name%></p>
+<p>自己紹介</p>
+<p><%= @user.introduction %></p>
+<%= link_to "プロフィール編集", edit_user_path(@user) %>

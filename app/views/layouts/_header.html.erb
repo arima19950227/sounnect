@@ -1,0 +1,36 @@
+<header>
+  <nav class="navbar navbar-expand-lg nav-light bg-light">
+    <div class="container" style='height:70px'>
+
+          <!--管理側でのheader-->
+          <%= link_to "souunect", root_path %>
+          <!--注文履歴一覧へのリンク-->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><!--レスポンシブ対応の展開ボタン-->
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="row">
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if admin_signed_in? %> <!--管理者側がログイン中か確認する-->
+                  <li><%= link_to "レビュー管理", admin_reviews_path, class: 'nav-link text-dark' %></li><!--レビュー一覧へのリンク-->
+                  <li><%= link_to "ユーザー管理", admin_users_path, class: 'nav-link text-dark' %></li><!--会員一覧へのリンク-->
+                  <li><%= link_to "ログアウト", destroy_admin_session_path, class: 'nav-link text-dark', method: :delete %></li><!--ログアウトへのリンク-->
+              <% end %>
+              <!--顧客側ログイン中のheader-->
+              <% if user_signed_in? %> <!--顧客側がログイン中か確認する-->
+                  <li><%= link_to "mypage", user_path(current_user), class: 'nav-link text-dark' %></li><!--マイページへのリンク-->
+                  <li><%= link_to "reviews", reviews_path, class: 'nav-link text-dark' %></li><!--レビュー一覧へのリンク-->
+                  <li><%= link_to "users", users_path, class: 'nav-link text-dark' %></li><!--ユーザー一覧へのリンク-->
+                  <li><%= link_to "log_out", destroy_user_session_path, class: 'nav-link text-dark', method: :delete %></li><!--ログアウトへのリンク-->
+              <!--顧客側のheader-->
+              <% else %><!--非ログイン時に表示するheader-->
+                <% unless admin_signed_in? %>
+                  <li><%= link_to "About", about_path, 'data-turbolinks': false, class: 'nav-link text-dark' %></li><!--aboutへのリンク-->
+                  <li><%= link_to "sign_up", new_user_registration_path, class: 'nav-link text-dark' %></li><!--新規登録へのリンク-->
+                  <li><%= link_to "log_in", new_user_session_path, class: 'nav-link text-dark' %></li><!--ログイン画面へのリンク-->
+                <% end %>
+              <% end %>
+            </ul>
+    </div>
+  </nav>
+</header>

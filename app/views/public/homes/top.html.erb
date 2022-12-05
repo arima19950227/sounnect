@@ -1,2 +1,24 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+
+<p>より良いサウナのひとときを</p>
+<h1>Sounnect</h1>
+
+<div>
+<P>気になるサウナのレビューを検索</P>
+</div>
+
+<div>
+ <p>新着レビュー</p>
+ <P>ここから最新のレビュー一覧表示↓</P>
+
+ <% if user_signed_in? %>
+  <%= link_to "more", reviews_path %>
+ <% else %>
+  <%= link_to "more", new_user_session_path %>
+ <% end %>
+
+</div>
+
+<%= link_to 'Twitter', "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' %>
+
+<div class="line-it-button" data-lang="ja" data-type="share-c" data-env="REAL" data-url="https://1a5fe85d143f48e597243aaf5428c2f6.vfs.cloud9.ap-northeast-1.amazonaws.com/" data-color="default" data-size="small" data-count="true" data-ver="3" style="display: none;"></div>
+<script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
