@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2022_12_05_050822) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.integer "user_id", null: false
     t.string "name", null: false
     t.text "address", null: false
     t.integer "sauna_area", null: false
@@ -110,7 +111,6 @@ ActiveRecord::Schema.define(version: 2022_12_05_050822) do
     t.text "body", null: false
     t.integer "sauna_time", null: false
     t.integer "congestion", null: false
-    t.float "evaluation", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

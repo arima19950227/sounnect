@@ -41,4 +41,12 @@ class User < ApplicationRecord
   end
   profile_image.variant(resize_to_limit: [width, height]).processed
  end
+
+ def self.guest
+  find_or_create_by!(email: 'test@test.com') do |user|
+    user.password = SecureRandom.alphanumeric(10) + [*'a'..'z'].sample(1).join + [*'0'..'9'].sample(1).join
+    user.name = 'ゲストユーザー'
+    user.phone_number = '12345678901'
+   end
+ end
 end

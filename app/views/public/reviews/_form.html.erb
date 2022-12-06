@@ -1,0 +1,74 @@
+ <%= form_with model: review, local:true do |f| %>
+      <div class="form-group row">
+        <%= f.label "施設名", class: 'col-md-4' %>
+        <%= f.text_field :name, class: "form-control name col-md-5" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label "住所", class: 'col-md-4' %>
+        <%= f.text_field :address, placeholder: "◯◯県◯◯市/郡◯◯/区/町/村/番地", class: "form-control name col-md-5" %>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label "利用料金",class: 'col-md-4' %>
+        <%= f.text_field :price, placeholder: "大人1名あたり", class: "form-control name col-md-1" %><span class="col-md-7">円</span>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label "サウナの広さ", class: 'col-md-4' %>
+        <%= f.collection_radio_buttons :sauna_area, Review.sauna_areas_i18n, :first , :last, class: "form-control name" %>
+      </div>
+
+       <div class="form-group row">
+         <%= f.label "サウナの温度", class: 'col-md-4' %>
+         <%= f.collection_radio_buttons :sauna_temperature, Review.sauna_temperatures_i18n, :first , :last, class: "form-control name" %>
+       </div>
+
+       <div class="form-group row">
+         <%= f.label "ロウリュの種類", class: 'col-md-4' %>
+         <%= f.collection_radio_buttons :loryu_type, Review.loryu_types_i18n, :first , :last, class: "form-control name" %>
+       </div>
+
+       <div class="form-group row">
+         <%= f.label "アウフグース有無", class: 'col-md-4' %>
+         <%= f.collection_radio_buttons :aufguss, Review.aufgusses_i18n, :first , :last, class: "form-control name" %>
+       </div>
+
+        <div class="form-group row">
+         <%= f.label "水風呂の広さ", class: 'col-md-4' %>
+         <%= f.collection_radio_buttons :water_area, Review.water_areas_i18n, :first , :last, class: "form-control name" %>
+       </div>
+
+       <div class="form-group row">
+         <%= f.label "水風呂の温度", class: 'col-md-4' %>
+         <%= f.collection_radio_buttons :water_temperature, Review.water_temperatures_i18n, :first , :last, class: "form-control name" %>
+       </div>
+
+       <div class="form-group row">
+         <%= f.label "チェアの数", class: 'col-md-4' %>
+         <%= f.collection_radio_buttons :chair_count, Review.chair_counts_i18n, :first , :last, class: "form-control name" %>
+       </div>
+
+       <div class="form-group row">
+         <%= f.label "行った時間帯", class: 'col-md-4' %>
+         <%= f.collection_radio_buttons :sauna_time, Review.sauna_times_i18n, :first , :last, class: "form-control name" %>
+       </div>
+
+       <div class="form-group row">
+         <%= f.label "混雑状況", class: 'col-md-4' %>
+         <%= f.collection_radio_buttons :congestion, Review.congestions_i18n, :first , :last, class: "form-control name" %>
+       </div>
+
+       <div class="form-group row">
+         <%= f.label "サウナ写真", class: "col-md-4" %>
+         <%= f.file_field :sauna_image, class: "form-control-file user_image col-md-8", accept: 'image/*' %>
+        </div>
+
+       <div class="form-group row">
+         <%= f.label "感想・詳細など", class: 'col-md-4' %>
+         <%= f.text_area :body, size: "5x6", class: "form-control name col-md-8" %>
+        </div>
+
+        <div class="form-group row">
+         <%= f.submit "投稿する", class: 'btn btn-secondary' %>
+        </div>
+     <% end %>

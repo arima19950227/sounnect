@@ -43,5 +43,8 @@ scope module: :public do
    resources :reviews, only: [:index,:show,:edit,:update]
   end
 
+  devise_scope :user do
+   post 'users/guest_sign_in' => 'public/sessions#new_guest', as: 'guest'
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

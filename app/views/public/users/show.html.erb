@@ -5,3 +5,15 @@
 <p>自己紹介</p>
 <p><%= @user.introduction %></p>
 <%= link_to "プロフィール編集", edit_user_path(@user) %>
+<table>
+<tbody>
+    <% @reviews.each do |review| %>
+     <tr>
+       <td><%= image_tag review.get_sauna_image(100,100) %></td>
+       <td><%= link_to review.name,review_path(review.id) %></td>
+       <td><%= review.address %></td>
+       <td><%= review.price %>円</td>
+     </tr>
+    <% end %>
+  </tbody>
+</table>

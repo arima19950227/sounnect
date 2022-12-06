@@ -1,2 +1,29 @@
-<h1>Public::Reviews#show</h1>
-<p>Find me in app/views/public/reviews/show.html.erb</p>
+<h2>詳細レビュー</h2>
+<div>
+ <div>
+   <%=link_to(@review.user)do%>
+    <%=image_tag@review.user.get_profile_image(100,100)%><br>
+    <%=@review.user.name%>
+   <%end%>
+ </div>
+ <div>
+  <%=image_tag@review.get_sauna_image(100,100)%>
+  <%=@review.name%>
+  <%=@review.address%>
+  <%=@review.price%>
+  <%=@review.sauna_area_i18n%>
+  <%=@review.sauna_temperature_i18n%>
+  <%=@review.loryu_type_i18n%>
+  <%=@review.aufguss_i18n%>
+  <%=@review.water_area_i18n%>
+  <%=@review.water_temperature_i18n%>
+  <%=@review.chair_count_i18n%>
+  <%=@review.sauna_time_i18n%>
+  <%=@review.congestion_i18n%>
+  <%=@review.body%>
+ </div>
+</div>
+<% if @review.user == current_user %>
+  <%= link_to '編集', edit_review_path(@review), class: "btn btn-sm btn-success" %>
+  <%= link_to '削除', review_path(@review), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+<% end %>
