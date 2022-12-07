@@ -27,3 +27,11 @@
   <%= link_to '編集', edit_review_path(@review), class: "btn btn-sm btn-success" %>
   <%= link_to '削除', review_path(@review), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
 <% end %>
+
+<p>コメント一覧</p>
+ <div class= "comment_area">
+  <%= render 'public/comments/comment', review: @review %>
+ </div>
+ <div>
+  <%= render 'public/comments/form', review: @review, comment: @comment %>
+</div>

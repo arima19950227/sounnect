@@ -1,0 +1,12 @@
+<% review.comments.each do |review_comment| %>
+   <p><%= image_tag review_comment.user.get_profile_image(50,50) %>
+       <%= review_comment.comment %>
+      <% if review_comment.user == current_user %>
+        <%= link_to "Destroy", review_comment_path(review_comment.review, review_comment), class: "btn btn-sm btn-danger", method: :delete %>
+      <% end %>
+   </p>
+   <p><%= link_to(review.user) do %>
+       <%= review_comment.user.name %>
+       <% end %>
+   </p>
+ <% end %>
