@@ -22,8 +22,8 @@ scope module: :public do
    get 'followings' => 'relationships#followings', as: 'followings'
    get 'followers' => 'relationships#followers', as: 'followers'
    end
-   get "users/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
-   patch "userrs/withdraw" => "users#withdraw", as: "withdraw"
+   get "users/:id/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
+   patch "userrs/:id/withdraw" => "users#withdraw", as: "withdraw"
 
    resources :reviews do
    resources :favorites, only: [:create,:destroy]

@@ -17,6 +17,10 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
 
+   def active_for_authentication?
+    super && (is_deleted == false)
+   end
+
    # フォローしたときの処理
   def follow(user_id)
    relationships.create(followed_id: user_id)
