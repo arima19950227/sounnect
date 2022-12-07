@@ -21,6 +21,7 @@
   <%=@review.sauna_time_i18n%>
   <%=@review.congestion_i18n%>
   <%=@review.body%>
+  <%= render 'public/favorites/favorites', review: @review %>
  </div>
 </div>
 <% if @review.user == current_user %>
@@ -30,7 +31,7 @@
 
 <p>コメント一覧</p>
  <div class= "comment_area">
-  <%= render 'public/comments/comment', review: @review %>
+  <%= render 'public/comments/comment', review: @review, comments: @comments %>
  </div>
  <div>
   <%= render 'public/comments/form', review: @review, comment: @comment %>

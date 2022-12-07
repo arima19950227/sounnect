@@ -54,9 +54,13 @@ ActiveRecord::Schema.define(version: 2022_12_05_050822) do
 
   create_table "comment_favorites", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.integer "review_id", null: false
     t.integer "comment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_comment_favorites_on_comment_id"
+    t.index ["review_id"], name: "index_comment_favorites_on_review_id"
+    t.index ["user_id"], name: "index_comment_favorites_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -138,4 +142,7 @@ ActiveRecord::Schema.define(version: 2022_12_05_050822) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comment_favorites", "comments"
+  add_foreign_key "comment_favorites", "reviews"
+  add_foreign_key "comment_favorites", "users"
 end

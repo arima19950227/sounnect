@@ -5,6 +5,7 @@ class Review < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :comment_favorite, dependent: :destroy
 
   enum sauna_area: { small: 0, usually: 1, wide: 2 }, _prefix: true
   enum sauna_temperature: { cold: 0, mild: 1, usually: 2, hot:3 }, _prefix: true
@@ -16,6 +17,10 @@ class Review < ApplicationRecord
   enum sauna_time: { weekdaymorning: 0, weekdaynoon: 1, weekdaynight: 2, holidaymorning: 3, holidaynoon: 4, holidaynight: 5 }, _prefix: true
   enum congestion: { veryfew: 0, few: 1, usually: 2, many: 3, verymany: 4 }, _prefix: true
 
+
+   def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+   end
 
   def get_sauna_image(width, height)
   unless sauna_image.attached?
