@@ -5,25 +5,10 @@
         <%= link_to "Destroy", review_comment_path(review_comment.review, review_comment), class: "btn btn-sm btn-danger", method: :delete %>
       <% end %>
    </p>
+   <%#<p><%= render 'public/comment_favorites/comment_favorites', review: @review, comment: @comment %>
    <p><%= link_to(review.user) do %>
        <%= review_comment.user.name %>
        <% end %>
    </p>
-
-   <%if user_signed_in? %>
-    <% if CommentFavorite.find_by(user_id: current_user.id, review_id: review.id, comment_id: comments.id) %>
-        <%= link_to review_comment_comment_favorite_path(review, comments, comments.comment_favorites), {class: "like-link", method: :delete } do %>
-          <i class="fas fa-grin-squint-tears unlike-btn"></i>
-        <% end %>
-        <p class="count"><%= comments.comment_favorites.count %></p>
-    <% else %>
-        <%= link_to review_comment_comment_favorites_path(review, comments), {class: "like-link", method: :post } do %>
-          <i class="far fa-grin-squint-tears like-btn"></i>
-        <% end %>
-        <p class="count"><%= comments.comment_favorites.count %></p>
-    <% end %>
-  <% else %>
-      <i class="fas fa-grin-squint-tears unlike-btn"></i><p class="count"><%= comment.likes.count %></p>
-  <% end %>
 
  <% end %>

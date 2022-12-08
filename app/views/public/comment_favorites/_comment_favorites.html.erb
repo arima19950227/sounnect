@@ -1,0 +1,15 @@
+<%if user_signed_in? %>
+    <% if CommentFavorite.find_by(user_id: current_user.id, review_id: review.id, comment_id: comment.id) %>
+        <%= link_to review_comment_comment_favorite_path(review, comment, comment.comment_favorite), {class: "like-link", method: :delete } do %>
+          <i class="fas fa-grin-squint-tears unlike-btn"></i>
+        <% end %>
+        <p class="count"><%= comment.comment_favorite.count %></p>
+    <% else %>
+        <%= link_to review_comment_comment_favorites_path(review, comment), {class: "like-link", method: :post } do %>
+          <i class="far fa-grin-squint-tears like-btn"></i>
+        <% end %>
+        <p class="count"><%= comment.comment_favorite.count %></p>
+    <% end %>
+  <% else %>
+      <i class="fas fa-grin-squint-tears unlike-btn"></i><p class="count"><%= comment.comment_favorite.count %></p>
+  <% end %>

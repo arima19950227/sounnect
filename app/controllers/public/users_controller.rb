@@ -5,7 +5,31 @@ class Public::UsersController < ApplicationController
   end
 
   def show
+    #レコードからユーザー1人1人の情報を持ってくる
     @user = User.find(params[:id])
+    #roomがcreateされた時に、現在ログインしているユーザーと、
+    #「チャットへ」を押されたユーザーの両方をEntriesテーブルに記録する必要があるので、
+    #whereメソッドでそのユーザーを探している
+    @currentUserEntry=Entry.where(user_id: current_user.id)
+    @userEntry=Entry.where(user_id: @user.id)
+
+    #showページのユーザーが現在ログインしているユーザーではないというunlessの条件
+    unless @user.id == current_user.id
+      @currentUserEntry.each do |cu|
+      @userEntry.each do |u|
+      #roomsが作成されている場合と作成されていない場合に条件分岐
+        if cu.room_id == u.room_id then
+          @isRoom = true
+          @roomId = cu.room_id
+        end
+      end
+     end
+      if @isRoom
+      else
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
     @reviews = Review.all
   end
 
