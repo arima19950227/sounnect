@@ -3,8 +3,11 @@
     <div class="container" style='height:70px'>
 
           <!--管理側でのheader-->
-          <%= link_to "souunect", root_path %>
-          <!--注文履歴一覧へのリンク-->
+           <% if admin_signed_in? %>
+             <%= link_to "souunect", admin_root_path %>
+           <% else %>
+             <%= link_to "souunect", root_path %>
+           <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><!--レスポンシブ対応の展開ボタン-->
             <span class="navbar-toggler-icon"></span>
           </button>

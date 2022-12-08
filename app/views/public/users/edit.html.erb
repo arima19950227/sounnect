@@ -4,15 +4,15 @@
     <h2>ユーザー編集</h2>
     <%= form_with model:@user do |f| %>
       <div class="form-group col-12">
-        <%= f.label :name %>
+        <%= f.label "名前" %>
         <%= f.text_field :name, class: "form-control name" %>
       </div>
       <div class="form-group">
-        <%= f.label :image %>
+        <%= f.label "施設の写真" %>
         <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
       </div>
       <div class="form-group col-12">
-        <%= f.label :introduction %>
+        <%= f.label "自己紹介" %>
         <%= f.text_area :introduction, class: "form-control introduction" %>
       </div>
       <div class="form-group">
@@ -24,6 +24,5 @@
       </div>
     <% end %>
      </div>
-
   </div>
 </div>

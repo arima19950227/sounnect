@@ -5,7 +5,7 @@ class Review < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :comment_favorite, dependent: :destroy
+  #has_many :comment_favorite, dependent: :destroy
 
   enum sauna_area: { small: 0, usually: 1, wide: 2 }, _prefix: true
   enum sauna_temperature: { cold: 0, mild: 1, usually: 2, hot:3 }, _prefix: true

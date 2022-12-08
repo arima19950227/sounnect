@@ -1,2 +1,33 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<h1>ユーザー詳細情報</h1>
+<p><%= image_tag @user.get_profile_image(100,100) %></p>
+<p>ユーザーID</p>
+<p><%= @user.id%></p>
+<p>ユーザー名</p>
+<p><%= @user.name%></p>
+<p>自己紹介</p>
+<p><%= @user.introduction %></p>
+<p>電話番号</p>
+<p><%= @user.phone_number %></p>
+<p>ユーザーステーテス</p>
+<% if @user.is_deleted %>
+  <p class="text-Secondary">退会</p>
+<% else %>
+  <b class="text-success">有効</b>
+<% end %>
+<%= link_to edit_admin_user_path(@user), class: "btn btn-outline-secondary btn-block col-1" do %>
+<i class="fas fa-user-cog"></i>
+<% end %>
+</div>
+<p>投稿一覧</p>
+<table>
+<tbody>
+    <% @reviews.each do |review| %>
+     <tr>
+       <td><%= image_tag review.get_sauna_image(100,100) %></td>
+       <td><%= link_to review.name,admin_review_path(review.id) %></td>
+       <td><%= review.address %></td>
+       <td><%= review.price %>円</td>
+     </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -40,7 +40,7 @@ scope module: :public do
    namespace :admin do
    root to: "homes#top"
    resources :users, only: [:index,:show,:edit,:update]
-   resources :reviews, only: [:index,:show,:edit,:update]
+   resources :reviews, only: [:index,:show,:edit,:update,:destroy]
   end
 
   devise_scope :user do
