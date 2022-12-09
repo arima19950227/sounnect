@@ -53,4 +53,9 @@ class User < ApplicationRecord
     user.phone_number = '12345678901'
    end
  end
+
+  validates :name, presence: true
+  validates :phone_number, presence: true, length: { is: 11 }, uniqueness: true, numericality: {only_integer: true}
+  validates :introduction, length: { maximum: 50 }
+
 end

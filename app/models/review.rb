@@ -30,4 +30,18 @@ class Review < ApplicationRecord
   sauna_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  validates :name, presence: true, length: { maximum: 30 }
+  validates :address, presence: true
+  validates :sauna_area, presence: true
+  validates :sauna_temperature, presence: true
+  validates :loryu_type, presence: true
+  validates :aufguss, presence: true
+  validates :water_temperature, presence: true
+  validates :water_area, presence: true
+  validates :chair_count, presence: true
+  validates :price, presence: true, numericality: {only_integer: true}
+  validates :body, presence: true
+  validates :sauna_time, presence: true
+  validates :congestion, presence: true
+
 end

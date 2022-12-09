@@ -1,7 +1,14 @@
 class Admin::ReviewsController < ApplicationController
 
+ before_action :authenticate_admin!, :search
+
   def index
-    @reviews= Review.all
+    @reviews = @q.result(distinct: true)
+  end
+
+  def search
+    # params[:q]のqには検索フォームに入力した値が入る/検索の処理をしている
+    @q = Review.ransack(params[:q])
   end
 
   def show
@@ -17,7 +24,8 @@ class Admin::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
-     redirect_to review_path(@review)
+    flash[:notice] = "レビューを更新しました"
+     redirect_to admin_review_path(@review)
     else
      render :edit
     end
@@ -26,6 +34,7 @@ class Admin::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
+    flash[:notice] = "投稿を削除しました"
     redirect_to reviews_path
 
   end

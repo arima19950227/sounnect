@@ -1,8 +1,16 @@
 class Public::ReviewsController < ApplicationController
 
+  before_action :search
+
   def index
-    @reviews= Review.all
+    # distinct: trueは重複したデータを除外/検索結果の表示
+    @reviews=  @q.result(distinct: true)
   end
+
+   def search
+    # params[:q]のqには検索フォームに入力した値が入る/検索の処理をしている
+    @q = Review.ransack(params[:q])
+   end
 
   def new
     @review = Review.new
@@ -12,7 +20,8 @@ class Public::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
      if @review.save
-       redirect_to reviews_path
+       flash[:notice] = "投稿に成功しました"
+       redirect_to review_path(@review.id)
      else
       render :new
      end
@@ -37,6 +46,7 @@ class Public::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.user_id = current_user.id
     if @review.update(review_params)
+     flash[:notice] = "レビューを更新しました"
      redirect_to review_path(@review)
     else
      render :edit
@@ -47,6 +57,7 @@ class Public::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.user_id = current_user.id
     @review.destroy
+    flash[:notice] = "投稿を削除しました"
     redirect_to reviews_path
 
   end

@@ -1,4 +1,13 @@
 <table class='table'>
+
+ <table class='table'>
+   <%= search_form_for @q do |f| %>
+  <!--name_contは、あいまい検索を指定-->
+  <%= f.text_field :name_cont %>
+  <%= f.submit "検索" %>
+  <% end %>
+<!--検索結果-->
+ <% if @users.present? %>
  <% @users.each do |user| %>
   <tr>
    <td><%= image_tag user.get_profile_image(100,100) %></td>
@@ -7,4 +16,8 @@
    <td><%= user.phone_number %></td>
   </tr>
  <% end %>
+ <% else %>
+  <!--検索がヒットしなかった場合-->
+  <p>検索結果はありません</p>
+<% end %>
 </table>

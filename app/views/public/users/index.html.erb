@@ -1,9 +1,21 @@
  <table class='table'>
- <% @users.each do |user| %>
+   <%= search_form_for @q do |f| %>
+  <!--name_contは、あいまい検索を指定-->
+  <%= f.text_field :name_cont %>
+  <%= f.submit "検索" %>
+  <% end %>
+<!--検索結果-->
+ <% if @users.present? %>
+  <!--検索がヒットした場合-->
+  <% @users.each do |user| %>
   <tr>
-   <td><%= image_tag user.get_profile_image(100,100) %></td>
+    <td><%= image_tag user.get_profile_image(100,100) %></td>
    <td><%= link_to user.name, user_path(user.id) %></td>
    <td><%= user.introduction %></td>
   </tr>
- <% end %>
+   <% end %>
+ <% else %>
+  <!--検索がヒットしなかった場合-->
+  <p>検索結果はありません</p>
+<% end %>
 </table>

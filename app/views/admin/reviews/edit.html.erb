@@ -1,4 +1,4 @@
-<%= form_with model: @review, local:true do |f| %>
+<%= form_with model: @review, url: admin_review_path(@review.id), local: true ,method: :patch  do |f| %>
       <div class="form-group row">
         <%= f.label "施設名", class: 'col-md-4' %>
         <%= f.text_field :name, class: "form-control name col-md-5" %>
@@ -69,6 +69,6 @@
         </div>
 
         <div class="form-group row">
-         <%= f.submit "投稿する", class: 'btn btn-secondary' %>
+         <%= f.submit "編集する", class: 'btn btn-secondary' %>
         </div>
      <% end %>

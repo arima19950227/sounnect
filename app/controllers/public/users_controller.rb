@@ -1,7 +1,15 @@
 class Public::UsersController < ApplicationController
 
+  before_action :search
+
   def index
-    @users = User.all
+    # distinct: trueは重複したデータを除外/検索結果の表示
+    @users = @q.result(distinct: true)
+  end
+
+  def search
+    # params[:q]のqには検索フォームに入力した値が入る/検索の処理をしている
+    @q = User.ransack(params[:q])
   end
 
   def show
@@ -41,6 +49,7 @@ class Public::UsersController < ApplicationController
   def update
      @user = User.find(params[:id])
     if @user.update(user_params)
+      flash[:notice] = "ユーザー情報更新"
       redirect_to user_path(@user)
     else
       render "edit"

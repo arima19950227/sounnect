@@ -1,7 +1,13 @@
 class Admin::UsersController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, :search
+
    def index
-    @users = User.all
+     @users = @q.result(distinct: true)
+   end
+
+   def search
+    # params[:q]のqには検索フォームに入力した値が入る/検索の処理をしている
+    @q = User.ransack(params[:q])
    end
 
   def show
@@ -17,6 +23,7 @@ class Admin::UsersController < ApplicationController
   def update
      @user = User.find(params[:id])
     if @user.update(user_params)
+      flash[:notice] = "ユーザー情報を更新しました"
       redirect_to admin_user_path(@user.id)
     else
       render "edit"

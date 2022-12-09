@@ -18,14 +18,18 @@ scope module: :public do
    get "about" => "homes#about"
 
    resources :users, only: [:index,:show,:edit,:update] do
-   resource :relationships, only: [:create, :destroy]
-   get 'followings' => 'relationships#followings', as: 'followings'
-   get 'followers' => 'relationships#followers', as: 'followers'
-   end
+    resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
+     collection do
+      get 'search'
+     end
+  end
    get "users/:id/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
    patch "userrs/:id/withdraw" => "users#withdraw", as: "withdraw"
 
    resources :reviews do
+
     resources :favorites, only: [:create,:destroy]
      resources :comments, only: [:create,:destroy] do
      resources :comment_favorites, only: [:create,:destroy]
@@ -39,8 +43,16 @@ scope module: :public do
 
    namespace :admin do
    root to: "homes#top"
-   resources :users, only: [:index,:show,:edit,:update]
-   resources :reviews, only: [:index,:show,:edit,:update,:destroy]
+   resources :users, only: [:index,:show,:edit,:update] do
+     collection do
+      get 'search'
+     end
+    end
+   resources :reviews, only: [:index,:show,:edit,:update,:destroy] do
+    collection do
+      get 'search'
+     end
+    end
   end
 
   devise_scope :user do

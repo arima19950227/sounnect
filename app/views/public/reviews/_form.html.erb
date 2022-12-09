@@ -1,3 +1,11 @@
+ <% if review.errors.any? %>
+  <%= review.errors.count %>件のエラーが発生しました
+  <ul>
+    <% review.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
  <%= form_with model: review, local:true do |f| %>
       <div class="form-group row">
         <%= f.label "施設名", class: 'col-md-4' %>
