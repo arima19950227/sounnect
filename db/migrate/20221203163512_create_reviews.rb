@@ -15,6 +15,7 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.text :body, null:false
       t.integer :sauna_time, null:false
       t.integer :congestion, null:false
+      t.float :evaluation, null:false
       t.timestamps
     end
   end

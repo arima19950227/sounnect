@@ -22,6 +22,22 @@
   <%=@review.sauna_time_i18n%>
   <%=@review.congestion_i18n%>
   <%=@review.body%>
+  <div id="post_raty<%= @review.id %>"></div>
+   <script>
+   $(function(){
+    console.log($('#post_raty<%= @review.id %>'));
+     $('#post_raty<%= @review.id %>').raty({
+      //星画像の指定などのオプションをここに記述,
+       size     : 36,
+       starOff:  '<%= asset_path('star-off.png') %>',
+       starOn : '<%= asset_path('star-on.png') %>',
+       starHalf: '<%= asset_path('star-half.png') %>',
+       score: <%= @review.evaluation %>,
+       readOnly: true,
+       half: true,
+        });
+       })
+   </script>
   <%= render 'public/favorites/favorites', review: @review %>
  </div>
 </div>

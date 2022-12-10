@@ -1,11 +1,8 @@
  <%= link_to "新規レビュー投稿", new_review_path %>
-<table class='table table-hover table-inverse'>
-  <%= search_form_for @q do |f| %>
-  <!--name_contは、あいまい検索を指定-->
-  <%= f.text_field :name_cont %>
-  <%= f.submit "検索" %>
-  <% end %>
+
+ <%= render 'public/reviews/search', q: @q %>
   <div><%= flash[:notice] %></div>
+  <table class='table table-hover table-inverse'>
   <thead>
     <tr>
       <th>写真</th>

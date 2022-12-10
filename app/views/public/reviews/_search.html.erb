@@ -1,0 +1,33 @@
+ <div>
+  <%= search_form_for q do |f| %>
+  <p><%= f.label "施設名" %></p>
+  <p><%= f.text_field :name_cont %></p>
+
+  <p><%= f.label "住所" %></p>
+  <p><%= f.text_field :address_cont %></p>
+
+   <p><%= f.label "金額" %></p>
+  <p><%= f.text_field :price_gteq %>円〜<%= f.text_field :price_lteq %>円</P>
+
+  <p>詳細な条件検索</p>
+  <p><%= f.label "サウナの広さ" %></p>
+  <p><%= f.collection_radio_buttons :sauna_area_eq, Review.sauna_areas_i18n, :first , :last, class: "form-control name" %></p>
+
+  <p><%= f.label "サウナの温度" %></p>
+  <p><%= f.collection_radio_buttons :sauna_temperature_eq, Review.sauna_temperatures_i18n, :first , :last, class: "form-control name" %></p>
+
+  <p><%= f.label "ロウリュの種類", class: 'col-md-4' %></p>
+  <p><%= f.collection_radio_buttons :loryu_type_eq, Review.loryu_types_i18n, :first , :last, class: "form-control name" %></p>
+
+  <p><%= f.label "アウフグース有無", class: 'col-md-4' %></p>
+  <p><%= f.collection_radio_buttons :aufguss_eq, Review.aufgusses_i18n, :first , :last, class: "form-control name" %></p>
+
+  <p><%= f.label "水風呂の広さ", class: 'col-md-4' %></p>
+  <p><%= f.collection_radio_buttons :water_area_eq, Review.water_areas_i18n, :first , :last, class: "form-control name" %></p>
+
+  <p><%= f.label "水風呂の温度", class: 'col-md-4' %></p>
+  <p><%= f.collection_radio_buttons :water_temperature_eq, Review.water_temperatures_i18n, :first , :last, class: "form-control name" %></p>
+
+  <%= f.submit "検索" %>
+  <% end %>
+  </div>

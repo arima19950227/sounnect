@@ -1,10 +1,11 @@
 class Public::ReviewsController < ApplicationController
 
-  before_action :search
+  before_action :search, only: [:index, :search]
 
   def index
     # distinct: trueは重複したデータを除外/検索結果の表示
     @reviews=  @q.result(distinct: true)
+
   end
 
    def search
@@ -67,7 +68,7 @@ class Public::ReviewsController < ApplicationController
  private
 
   def review_params
-    params.require(:review).permit(:name, :address, :sauna_area, :sauna_temperature, :loryu_type, :aufguss, :water_temperature, :water_area, :chair_count, :price, :body, :sauna_time, :congestion, :sauna_image)
+    params.require(:review).permit(:name, :address, :sauna_area, :sauna_temperature, :loryu_type, :aufguss, :water_temperature, :water_area, :chair_count, :price, :body, :sauna_time, :congestion, :sauna_image, :evaluation)
   end
 
 end

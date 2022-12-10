@@ -1,10 +1,12 @@
 <table class='table table-hover table-inverse'>
   <div><%= flash[:notice] %></div>
-   <%= search_form_for @q do |f| %>
-  <!--name_contは、あいまい検索を指定-->
-  <%= f.text_field :name_cont %>
-  <%= f.submit "検索" %>
-  <% end %>
+  <div>
+    <%= search_form_for @q do |f| %>
+    <!--name_contは、あいまい検索を指定-->
+    <p><%= f.text_field :name_cont %></p>
+    <p><%= f.submit "検索" %></p>
+    <% end %>
+  </div>
   <thead>
     <tr>
       <th>写真</th>
