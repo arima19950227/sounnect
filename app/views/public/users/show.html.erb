@@ -1,5 +1,5 @@
 <div><%= flash[:notice] %></div>
-<h1>マイページ</h1>
+<h1><%= @user.name%>さんの詳細</h1>
 <p><%= image_tag @user.get_profile_image(100,100) %></p>
 <p>ユーザー名</p>
 <p><%= @user.name%></p>
@@ -59,3 +59,4 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @reviews %>

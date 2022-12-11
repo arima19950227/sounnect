@@ -29,7 +29,6 @@ scope module: :public do
    patch "userrs/:id/withdraw" => "users#withdraw", as: "withdraw"
 
    resources :reviews do
-
     resources :favorites, only: [:create,:destroy]
      resources :comments, only: [:create,:destroy] do
      resources :comment_favorites, only: [:create,:destroy]
@@ -48,11 +47,7 @@ scope module: :public do
       get 'search'
      end
     end
-   resources :reviews, only: [:index,:show,:edit,:update,:destroy] do
-    collection do
-      get 'search'
-     end
-    end
+   resources :reviews, only: [:index,:show,:edit,:update,:destroy]
   end
 
   devise_scope :user do

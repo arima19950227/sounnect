@@ -38,7 +38,15 @@ class Public::UsersController < ApplicationController
         @entry = Entry.new
       end
     end
-    @reviews = Review.all
+
+  if @user.id == current_user.id
+    user_ids = current_user.following_ids # フォローしているユーザーのid一覧
+    user_ids.push(current_user.id)  # 自身のidを一覧に追加する
+    @reviews = Review.where(user_id: user_ids).page(params[:page]).order(created_at: :desc)
+  else
+     @reviews = Review.where(user_id: [@user.id]).page(params[:page]).order(created_at: :desc)
+  end
+
   end
 
   def edit

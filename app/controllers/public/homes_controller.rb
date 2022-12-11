@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-    @reviews = Review.all
+    @reviews = Review.all.limit(5).order(created_at: :desc)
   end
 
   def about

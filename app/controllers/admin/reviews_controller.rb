@@ -1,14 +1,18 @@
 class Admin::ReviewsController < ApplicationController
 
- before_action :authenticate_admin!, :search
 
   def index
-    @reviews = @q.result(distinct: true)
-  end
-
-  def search
-    # params[:q]のqには検索フォームに入力した値が入る/検索の処理をしている
-    @q = Review.ransack(params[:q])
+    @params = params
+    if params[:address]
+        if params[:price_min] == "" ||  params[:price_max] == ""
+          @reviews = Review.where(['name LIKE(?) and address LIKE(?) and sauna_area  LIKE(?) and sauna_temperature LIKE(?) and loryu_type LIKE(?) and aufguss LIKE(?) and water_area LIKE(?) and water_temperature LIKE(?)', "%#{params[:name]}%", "%#{params[:address]}%" , "%#{params[:sauna_area]}%", "%#{params[:sauna_temperature]}%", "%#{params[:loryu_type]}%", "%#{params[:aufguss]}%", "%#{params[:water_area]}%", "%#{params[:water_temperature]}%"])
+        else
+          @reviews  = Review.where(['name LIKE(?) and address LIKE(?) and sauna_area  LIKE(?) and sauna_temperature LIKE(?) and loryu_type LIKE(?) and aufguss LIKE(?) and water_area LIKE(?) and water_temperature LIKE(?)', "%#{params[:name]}%", "%#{params[:address]}%" , "%#{params[:sauna_area]}%", "%#{params[:sauna_temperature]}%", "%#{params[:loryu_type]}%", "%#{params[:aufguss]}%", "%#{params[:water_area]}%", "%#{params[:water_temperature]}%"])
+          .where(price: (params[:price_min])..(params[:price_max]))
+        end
+    else
+         @reviews =  Review.page(params[:page]).order(created_at: :desc)
+    end
   end
 
   def show

@@ -1,12 +1,6 @@
-<table class='table table-hover table-inverse'>
-  <div><%= flash[:notice] %></div>
-  <div>
-    <%= search_form_for @q do |f| %>
-    <!--name_contは、あいまい検索を指定-->
-    <p><%= f.text_field :name_cont %></p>
-    <p><%= f.submit "検索" %></p>
-    <% end %>
-  </div>
+<div><%= flash[:notice] %></div>
+ <%= render 'admin/reviews/search'%>
+  <table class='table table-hover table-inverse'>
   <thead>
     <tr>
       <th>写真</th>
@@ -32,3 +26,4 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @reviews %>

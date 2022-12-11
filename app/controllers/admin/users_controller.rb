@@ -12,7 +12,8 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @reviews = Review.all
+    @reviews = Review.where(user_id: [@user.id]).page(params[:page]).order(created_at: :desc)
+
   end
 
   def edit
