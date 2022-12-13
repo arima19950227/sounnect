@@ -1,0 +1,28 @@
+<h1 class="title col-6">
+  <span class="b">S</span>
+  <span class="b">A</span>
+  <span class="b">U</span>
+  <span class="b">N</span>
+  <span class="b">A</span>
+  <span class="c">x</span>
+  <span class="d">C</span>
+  <span class="d">O</span>
+  <span class="d">N</span>
+  <span class="d">N</span>
+  <span class="d">E</span>
+  <span class="d">C</span>
+  <span class="d">T</span>
+</h1>
+
+<script>
+const CLASSNAME = "-visible";
+const TIMEOUT = 1500;
+const $target = $(".title");
+
+setInterval(() => {
+  $target.addClass(CLASSNAME);
+  setTimeout(() => {
+    $target.removeClass(CLASSNAME);
+  }, TIMEOUT);
+}, TIMEOUT * 2);
+</script>

@@ -1,27 +1,82 @@
 <div><%= flash[:notice] %></div>
-<p>より良いサウナのひとときを</p>
-<h1>Sounnect</h1>
 
-<div>
-<P>気になるサウナのレビューを検索</P>
+  <div class="card">
+    <img class="card-img" src="/assets/sauna_top3.jpeg" alt="">
+     <div class="card-img-overlay">
+      <p><%= render 'font'%></p>
+      <p class="text1">Saunnect</p>
+      <div class="card-img-overlay text-center mt-3 position-relative" style="margin-right:700px;">
+        <div class="col-12 mx-auto pt-2 pb-2" style="background-color:rgba(255,255,254,0.5);">
+           <h4>サウナーの皆様へ</h4>
+              <p>
+                このサイトは、サウナのレビューサイトになります。<br>
+                サウナレビューの閲覧や投稿をするには無料会員登録が必要になります。
+              </p>
+        </div>
+      </div>
+     </div>
+   </div>
+
+   <h3 class="row-12 text-left mt-5">
+     <strong style="margin-left:150px;">新着レビュー</strong>
+   </h3>
+   <div class="container">
+    <div class="row">
+    <div class="card col-7 mt-4 mb-5  shadow-lg rounded" style="border:none;">
+      <table class="table table-hover table-inverser">
+       <thead>
+        <tr>
+         <th>写真</th>
+         <th>施設名</th>
+         <th>住所</th>
+         <th colspan="3"></th>
+       </tr>
+       </thead>
+       <tbody>
+         <% @reviews.each do |review| %>
+        <tr>
+         <td class="col-2 mt-4 mb-5"><%= image_tag review.get_sauna_image(150,150) %><td>
+         <% if user_signed_in? %>
+           <td class="col-4">
+           <%= link_to review.name,review_path(review.id), class: 'text-info' %>
+
+         <% else %>
+            <%= link_to review.name, new_user_session_path, class: 'text-info' %>
+            </td>
+         <% end %>
+         <td class="col-4"style= "font-size:14px;">
+          <%= review.address %>
+         </td>
+     <% end %>
+        </tr>
+      </tbody>
+     </table>
+         <div style="text-align:right;">
+          <% if user_signed_in? %>
+           <%= link_to "レビューの一覧を見る＞", reviews_path, class: 'text-dark' %>
+          <% else %>
+           <%= link_to "レビューの一覧を見る＞", new_user_session_path, class: 'text-dark' %>
+          <% end %>
+          </div>
+   </div>
+
+   <div class="card col-4 ml-5 mt-4 mb-5 shadow-lg" style="border:none;">
+      <img class="totonoi-img" src="/assets/totonoi.jpeg">
+      <strong class="s" style="text-align:center; margin-top:50px;">~サウナの入り方~</strong>
+      <p class="s" style="text-align:center; margin-top:30px; font-size:15px;">若い世代や女性にも人気が広がりつつあるサウナ。</br>
+       サウナに入る前に体と頭をきちんと洗い、まずは水分補給。
+       サウナ室にいる時間は10分を目安に、</br>
+       その後、お湯で汗を流したら、2分程水風呂につかります。
+       水風呂から上がったらゆっくり座って、</br>
+       10分程外気浴で休憩を。椅子に深く腰かけてゆっくり目をつぶると、
+       体がじんわりと温まり、なんとも言えぬ心地良さに包まれます。
+      </p>
+     <div style="margin-left:300px;">
+      <div class="line-it-button" data-lang="ja" data-type="share-c" data-env="REAL" data-url="https://1a5fe85d143f48e597243aaf5428c2f6.vfs.cloud9.ap-northeast-1.amazonaws.com/" data-color="default" data-size="small" data-count="true" data-ver="3" style="display: none;">
+       <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+      </div>
+     </div>
+   </div>
+
+  </div>
 </div>
-
-<div>
- <p>新着レビュー</p>
- <% @reviews.each do |review| %>
-       <p><%= image_tag review.get_sauna_image(100,100) %></p>
-       <p><%= link_to review.name,review_path(review.id) %></p>
-       <p><%= review.address %></p>
-    <% end %>
-
- <% if user_signed_in? %>
-  <%= link_to "more", reviews_path %>
- <% else %>
-  <%= link_to "more", new_user_session_path %>
- <% end %>
-
-</div>
-<%= link_to 'Twitter', "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' %>
-
-<div class="line-it-button" data-lang="ja" data-type="share-c" data-env="REAL" data-url="https://1a5fe85d143f48e597243aaf5428c2f6.vfs.cloud9.ap-northeast-1.amazonaws.com/" data-color="default" data-size="small" data-count="true" data-ver="3" style="display: none;"></div>
-<script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>

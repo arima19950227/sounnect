@@ -1,12 +1,12 @@
 <header>
-  <nav class="navbar navbar-expand-lg nav-light bg-light">
+  <nav class="navbar navbar-expand-lg" style='background-color:#333300;'>
     <div class="container" style='height:70px'>
 
           <!--管理側でのheader-->
            <% if admin_signed_in? %>
-             <%= link_to "souunect", admin_root_path %>
+             <%= link_to "sauunect", admin_root_path, class: "a" %>
            <% else %>
-             <%= link_to "souunect", root_path %>
+             <%= link_to "sauunect", root_path, class: "a" %>
            <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><!--レスポンシブ対応の展開ボタン-->
             <span class="navbar-toggler-icon"></span>
@@ -15,23 +15,23 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %> <!--管理者側がログイン中か確認する-->
-                  <li><%= link_to "レビュー管理", admin_reviews_path, class: 'nav-link text-dark' %></li><!--レビュー一覧へのリンク-->
-                  <li><%= link_to "ユーザー管理", admin_users_path, class: 'nav-link text-dark' %></li><!--会員一覧へのリンク-->
-                  <li><%= link_to "ログアウト", destroy_admin_session_path, class: 'nav-link text-dark', method: :delete %></li><!--ログアウトへのリンク-->
+                  <li><%= link_to "レビュー管理", admin_reviews_path, class: 'nav-link text-white' %></li><!--レビュー一覧へのリンク-->
+                  <li><%= link_to "ユーザー管理", admin_users_path, class: 'nav-link text-white' %></li><!--会員一覧へのリンク-->
+                  <li><%= link_to "ログアウト", destroy_admin_session_path, class: 'nav-link text-white', method: :delete %></li><!--ログアウトへのリンク-->
               <% end %>
               <!--顧客側ログイン中のheader-->
               <% if user_signed_in? %> <!--顧客側がログイン中か確認する-->
-                  <li><%= link_to "mypage", user_path(current_user), class: 'nav-link text-dark' %></li><!--マイページへのリンク-->
-                  <li><%= link_to "reviews", reviews_path, class: 'nav-link text-dark' %></li><!--レビュー一覧へのリンク-->
-                  <li><%= link_to "users", users_path, class: 'nav-link text-dark' %></li><!--ユーザー一覧へのリンク-->
-                  <li><%= link_to "log_out", destroy_user_session_path, class: 'nav-link text-dark', method: :delete %></li><!--ログアウトへのリンク-->
+                  <li><%= link_to "mypage", user_path(current_user), class: 'nav-link text-white' %></li><!--マイページへのリンク-->
+                  <li><%= link_to "reviews", reviews_path, class: 'nav-link text-white' %></li><!--レビュー一覧へのリンク-->
+                  <li><%= link_to "users", users_path, class: 'nav-link text-white' %></li><!--ユーザー一覧へのリンク-->
+                  <li><%= link_to "log_out", destroy_user_session_path, class: 'nav-link text-white', method: :delete %></li><!--ログアウトへのリンク-->
               <!--顧客側のheader-->
               <% else %><!--非ログイン時に表示するheader-->
                 <% unless admin_signed_in? %>
-                  <li><%= link_to "About", about_path, 'data-turbolinks': false, class: 'nav-link text-dark' %></li><!--aboutへのリンク-->
-                  <li><%= link_to "sign_up", new_user_registration_path, class: 'nav-link text-dark' %></li><!--新規登録へのリンク-->
-                  <li><%= link_to "log_in", new_user_session_path, class: 'nav-link text-dark' %></li><!--ログイン画面へのリンク-->
-                  <li><%= link_to 'guest', guest_path, method: :post, class: 'nav-link text-dark' %></li>
+                  <li><%= link_to "saunnectとは？", about_path, 'data-turbolinks': false, class: 'nav-link text-white' %></li><!--aboutへのリンク-->
+                  <li><%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-white' %></li><!--新規登録へのリンク-->
+                  <li><%= link_to "ログイン", new_user_session_path, class: 'nav-link text-white' %></li><!--ログイン画面へのリンク-->
+                  <li><%= link_to 'ゲスト', guest_path, method: :post, class: 'nav-link text-white' %></li>
                 <% end %>
               <% end %>
             </ul>

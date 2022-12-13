@@ -13,3 +13,130 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  background-color: #EEEEEE;
+}
+
+.text1{
+  font-size: 180px;
+  margin-bottom: 0;
+  font-family: 'Kalam', cursive;
+  color: #FF7C00;
+  background: -webkit-linear-gradient(top, #FFB76B 0%, #FFA73D 50%, #FF7C00 51%, #FF7F04 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title {
+  display: flex;
+  overflow: hidden;
+  color: white;
+  font-family: 'Josefin Sans', sans-serif;
+  margin-top: 70px;
+  margin-left: 60px;
+}
+
+.title span {
+  display: block;
+  transform: translate(0, 105%);
+  transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+}
+
+.title.-visible span {
+  transform: translate(0, 0);
+}
+
+.title span:nth-child(2) {
+  transition-delay: 0.06s;
+}
+.title span:nth-child(3) {
+  transition-delay: 0.12s;
+}
+.title span:nth-child(4) {
+  transition-delay: 0.18s;
+}
+.title span:nth-child(5) {
+  transition-delay: 0.24s;
+}
+.title span:nth-child(6) {
+  transition-delay: 0.30s;
+}
+.title span:nth-child(7) {
+  transition-delay: 0.36s;
+}
+.title span:nth-child(8) {
+  transition-delay: 0.42s;
+}
+.title span:nth-child(9) {
+  transition-delay: 0.48s;
+}
+.title span:nth-child(10) {
+  transition-delay: 0.54s;
+}
+.title span:nth-child(11) {
+  transition-delay: 0.6s;
+}
+.title span:nth-child(12) {
+  transition-delay: 0.66s;
+}
+.title span:nth-child(13) {
+  transition-delay: 0.72s;
+}
+.title span:nth-child(14) {
+  transition-delay: 0.78s;
+}
+
+.a {
+   font-size: 30px;
+  margin-bottom: 0;
+  font-family: 'Kalam', cursive;
+  color: #FF7C00;
+  background: -webkit-linear-gradient(top, #FFB76B 0%, #FFA73D 50%, #FF7C00 51%, #FF7F04 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.b {
+  color: #FFA73D;
+  font-family: 'Kalam', cursive;
+
+}
+
+.c {
+  color: black;
+}
+
+.d {
+  color: #FF7F04;
+  font-family: 'Kalam', cursive;
+}
+
+.s {
+  font-family: 'Yuji Syuku', serif;
+}
+
+.about_sauna {
+   width: 300px;
+   height: 250px;
+   margin: 40px auto;
+
+}
+
+.about_title {
+  font-family: 'Yuji Syuku', serif;
+}
+
+.about_body{
+  font-size: 21px;
+}
+
+.about_sub {
+  font-family: 'Mochiy Pop One', sans-serif;
+}
