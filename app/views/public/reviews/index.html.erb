@@ -1,31 +1,54 @@
- <%= link_to "新規レビュー投稿", new_review_path %>
+<div><%= flash[:notice] %></div>
 
- <%= render 'public/reviews/search'%>
-  <div><%= flash[:notice] %></div>
-  <table class='table table-hover table-inverse'>
-  <thead>
-    <tr>
-      <th>写真</th>
-      <th>施設名</th>
-      <th>住所</th>
-      <th>大人一人当たりの価格</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-  <tbody>
+<h1 class="x" style="padding-top:50px; text-align:center;">♨︎サウナレビュー投稿一覧♨︎︎</h1>
+<%= link_to "レビューを投稿する", new_review_path, class: "btn-push" %>
+ <div class="container">
+  <div class="row">
+   <div class="col-8">
     <% if @reviews.present? %>
      <% @reviews.each do |review| %>
-     <tr>
-       <td><%= image_tag review.get_sauna_image(100,100) %></td>
-       <td><%= link_to review.name,review_path(review.id) %></td>
-       <td><%= review.address %></td>
-       <td><%= review.price %>円</td>
-     </tr>
+
+     <div class="card shadow rounded-top mb-5 mt-5" style="width:700px;">
+       <p><%= image_tag review.get_sauna_image(700,700), class: "sauna_image" %></p>
+      <div class="card-body row">
+
+       <p class="col-12"><%= link_to review.name,review_path(review.id), class: "review_name" %></p>
+
+       <strong class="col-3 mb-2"><住所></strong>
+       <p class="col-12 mb-4 ml-4" style="font-size:20px;"><%= review.address %></p>
+
+       <strong class="col-12"><大人一人当たりの金額></strong>
+       <p class="col-12 mb-4 ml-4 mt-3" style="font-size:20px;">¥<%= review.price %>円</p>
+
+       <strong class="col-12 mt-3"><総合評価></strong>
+       <p class="col-8 mt-3 ml-4" id="post_raty<%= review.id %>"></p>
+        <script>
+          $(function(){
+           console.log($('#post_raty<%= review.id %>'));
+          $('#post_raty<%= review.id %>').raty({
+            //星画像の指定などのオプションをここに記述,
+           size     : 36,
+           starOff:  '<%= asset_path('star-off.png') %>',
+           starOn : '<%= asset_path('star-on.png') %>',
+           starHalf: '<%= asset_path('star-half.png') %>',
+           score: <%= review.evaluation %>,
+           readOnly: true,
+           half: true,
+            });
+           })
+        </script>
+         <p class="col-3" style="margin-left:30px;"><%= image_tag review.user.get_profile_image(100,100) %></p>
+         <p class="col-12 text-right">投稿者:<%= review.user.name %>さん</p>
+      </div>
+     </div>
      <% end %>
     <% else %>
   <!--検索がヒットしなかった場合-->
- 　　 <p>検索結果はありません</p>
+   <p>検索結果はありません</p>
     <% end %>
-  </tbody>
-</table>
-<%= paginate @reviews %>
+     <%= paginate @reviews %>
+   </div>
+  <%= render 'public/reviews/search'%>
+
+</div>
+</div>

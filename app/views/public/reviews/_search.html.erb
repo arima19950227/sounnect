@@ -1,36 +1,43 @@
+ <div class="col-4 card mt-5" style="height:920px;">
 <%= form_with  url: reviews_path, method: :get  do |f| %>
- <div>
-  <p><%= f.label "施設名" %></p>
-  <p><%= f.text_field :name, value: @params["name"] %></p>
 
-  <p><%= f.label "住所" %></p>
-  <p><%= f.text_field :address , value: @params["address"] %></p>
+  <p class="mt-3 text-center border border-dark about_sub">検索フォーム</p>
+  <p class="mt-5"><%= f.label "施設名:", class: "about_sub" %>
+  <%= f.text_field :name, value: @params["name"], class: 'col-12' %></p>
 
-   <p><%= f.label "金額" %></p>
-  <p><%= f.text_field :price_min , value: @params["price_min"]%>円〜<%= f.text_field :price_max, value: @params["price_max"] %>円</P>
+  <p class="mb-0"><%= f.label "住所:", class: "about_sub" %></p>
+  <p><%= f.text_field :address , value: @params["address"], class: 'col-12' %></p>
 
-  <p>詳細な条件検索</p>
-  <p><%= f.label "サウナの広さ" %></p>
+   <p class="mb-0 mt-4"><%= f.label "金額:", class: "about_sub" %></p>
+   <div class= "col-12 text-right">
+     <p>￥<%= f.text_field :price_min , value: @params["price_min"], class: 'mr-2' %>円より高い</p>
+     <p>￥<%= f.text_field :price_max, value: @params["price_max"], class: 'mr-2' %>円より安い</P>
+   </div>
 
-  <%= f.radio_button :sauna_area, 0, {checked: @params["sauna_area"] == "0" }%>
-  <%= f.label :sauna_area, "狭い", {value: 0, style: "display: inline-block;"} %>
-  <%= f.radio_button :sauna_area, 1, {checked: @params["sauna_area"] == "1" }%>
-  <%= f.label :sauna_area, "普通", {value: 1, style: "display: inline-block;"} %>
-  <%= f.radio_button :sauna_area, 2, {checked: @params["sauna_area"] == "2" }%>
-  <%= f.label :sauna_area, "広い", {value: 2, style: "display: inline-block;"} %>
+  <p style="margin-top:50px; text-align: center;" class="border border-dark about_sub">詳細な条件検索</p>
 
+  <p class="mb-3 mt-4"><%= f.label "サウナの広さ:", class: 'mr-3 about_sub' %>
+    <%= f.radio_button :sauna_area, 0, {checked: @params["sauna_area"] == "0"}%>
+    <%= f.label :sauna_area, "狭い", {value: 0, style: "display: inline-block;", class: 'mr-3'}%>
+    <%= f.radio_button :sauna_area, 1, {checked: @params["sauna_area"] == "1" }%>
+    <%= f.label :sauna_area, "普通", {value: 1, style: "display: inline-block;", class: 'mr-3'} %>
+    <%= f.radio_button :sauna_area, 2, {checked: @params["sauna_area"] == "2" }%>
+    <%= f.label :sauna_area, "広い", {value: 2, style: "display: inline-block;"} %>
+  </p>
 
-  <p><%= f.label "サウナの温度" %></p>
-  <%= f.radio_button :sauna_temperature, 0, {checked: @params["sauna_temperature"] == "0" }%>
-  <%= f.label :sauna_temperature, "〜40℃", {value: 0, style: "display: inline-block;"} %>
-  <%= f.radio_button :sauna_temperature, 1, {checked: @params["sauna_temperature"] == "1" }%>
-  <%= f.label :sauna_temperature, "65℃〜70℃", {value: 1, style: "display: inline-block;"} %>
-  <%= f.radio_button :sauna_temperature, 2, {checked: @params["sauna_temperature"] == "2" }%>
-  <%= f.label :sauna_temperature, "80℃〜90℃", {value: 2, style: "display: inline-block;"} %>
-  <%= f.radio_button :sauna_temperature, 3, {checked: @params["sauna_temperature"] == "3" }%>
-  <%= f.label :sauna_temperature, "100℃以上", {value: 3, style: "display: inline-block;"} %>
-
-  <p><%= f.label "ロウリュの種類", class: 'col-md-4' %></p>
+  <p class="mb-0"><%= f.label "サウナの温度:", class: 'mr-2 about_sub' %>
+    <%= f.radio_button :sauna_temperature, 0, {checked: @params["sauna_temperature"] == "0" }%>
+    <%= f.label :sauna_temperature, "〜40℃", {value: 0, style: "display: inline-block;", class: 'mr-4'} %>
+    <%= f.radio_button :sauna_temperature, 1, {checked: @params["sauna_temperature"] == "1" }%>
+    <%= f.label :sauna_temperature, "65℃〜70℃", {value: 1, style: "display: inline-block;"} %></br>
+  </p>
+  <div class="text-right mr-4">
+    <%= f.radio_button :sauna_temperature, 2, {checked: @params["sauna_temperature"] == "2" }%>
+    <%= f.label :sauna_temperature, "80℃〜90℃", {value: 2, style: "display: inline-block;", class: 'mr-3'} %>
+    <%= f.radio_button :sauna_temperature, 3, {checked: @params["sauna_temperature"] == "3" }%>
+    <%= f.label :sauna_temperature, "100℃以上", {value: 3, style: "display: inline-block;"} %>
+  </div>
+  <p><%= f.label "ロウリュの種類:",class: 'mt-3 mb-0 about_sub' %></p>
   <%= f.radio_button :loryu_type, 0, {checked: @params["loryu_type"] == "0" }%>
   <%= f.label :loryu_type, "オートロウリュ", {value: 0, style: "display: inline-block;"} %>
   <%= f.radio_button :loryu_type, 1, {checked: @params["loryu_type"] == "1" }%>
@@ -40,31 +47,34 @@
 
 
 
-  <p><%= f.label "アウフグース有無", class: 'col-md-4' %></p>
-　<%= f.radio_button :aufguss, 0, {checked: @params["aufguss"] == "0" }%>
-  <%= f.label :aufguss, "あり", {value: 0, style: "display: inline-block;"} %>
-  <%= f.radio_button :aufguss, 1, {checked: @params["aufguss"] == "1" }%>
-  <%= f.label :aufguss, "なし", {value: 1, style: "display: inline-block;"} %>
+  <p><%= f.label "アウフグース有無:", class: 'mt-3 mr-4 about_sub' %>
+     <%= f.radio_button :aufguss, 0, {checked: @params["aufguss"] == "0" }%>
+     <%= f.label :aufguss, "あり", {value: 0, style: "display: inline-block;",class: "mr-3"} %>
+     <%= f.radio_button :aufguss, 1, {checked: @params["aufguss"] == "1" }%>
+     <%= f.label :aufguss, "なし", {value: 1, style: "display: inline-block;"} %>
+  </p>
 
+  <p><%= f.label "水風呂の広さ:", class: 'mb-0 mr-3 about_sub' %>
+     <%= f.radio_button :water_area, 0, {checked: @params["water_area"] == "0" }%>
+     <%= f.label :water_area, "狭い", {value: 0, style: "display: inline-block;",class: "mr-2"} %>
+     <%= f.radio_button :water_area, 1, {checked: @params["water_area"] == "1" }%>
+     <%= f.label :water_area, "普通", {value: 1, style: "display: inline-block;",class: "mr-2"} %>
+     <%= f.radio_button :water_area, 2, {checked: @params["water_area"] == "2" }%>
+      <%= f.label :water_area, "広い", {value: 2, style: "display: inline-block;"} %>
+  </p>
 
-  <p><%= f.label "水風呂の広さ", class: 'col-md-4' %></p>
-  <%= f.radio_button :water_area, 0, {checked: @params["water_area"] == "0" }%>
-  <%= f.label :water_area, "狭い", {value: 0, style: "display: inline-block;"} %>
-  <%= f.radio_button :water_area, 1, {checked: @params["water_area"] == "1" }%>
-  <%= f.label :water_area, "普通", {value: 1, style: "display: inline-block;"} %>
-  <%= f.radio_button :water_area, 2, {checked: @params["water_area"] == "2" }%>
-  <%= f.label :water_area, "広い", {value: 2, style: "display: inline-block;"} %>
+  <p><%= f.label "水風呂の温度:", class: 'mb-0 about_sub' %></p>
+  <div class="mb-4">
+    <%= f.radio_button :water_temperature, 0, {checked: @params["water_temperature"] == "0" }%>
+    <%= f.label :water_temperature, "18℃〜24℃", {value: 0, style: "display: inline-block;",class: "mr-3"} %>
+    <%= f.radio_button :water_temperature, 1, {checked: @params["water_temperature"] == "1" }%>
+    <%= f.label :water_temperature, "11℃〜17℃", {value: 1, style: "display: inline-block;",class: "mr-3"} %>
+    <%= f.radio_button :water_temperature, 2, {checked: @params["water_temperature"] == "2" }%>
+    <%= f.label :water_temperature, "10℃以下", {value: 2, style: "display: inline-block;"} %>
+  </div>
 
-
-  <p><%= f.label "水風呂の温度", class: 'col-md-4' %></p>
-  <%= f.radio_button :water_temperature, 0, {checked: @params["water_temperature"] == "0" }%>
-  <%= f.label :water_temperature, "18℃〜24℃", {value: 0, style: "display: inline-block;"} %>
-  <%= f.radio_button :water_temperature, 1, {checked: @params["water_temperature"] == "1" }%>
-  <%= f.label :water_temperature, "11℃〜17℃", {value: 1, style: "display: inline-block;"} %>
-  <%= f.radio_button :water_temperature, 2, {checked: @params["water_temperature"] == "2" }%>
-  <%= f.label :water_temperature, "10℃以下", {value: 2, style: "display: inline-block;"} %>
-
-
-  <%= f.submit "検索" %>
+  <div class="text-right">
+   <%= f.submit "この条件で検索", class: "btn btn-info"%>
+  </div>
   <% end %>
   </div>

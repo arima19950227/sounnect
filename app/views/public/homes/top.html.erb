@@ -33,22 +33,19 @@
        </tr>
        </thead>
        <tbody>
-         <% @reviews.each do |review| %>
+       <% @reviews.each do |review| %>
         <tr>
          <td class="col-2 mt-4 mb-5"><%= image_tag review.get_sauna_image(150,150) %><td>
          <% if user_signed_in? %>
-           <td class="col-4">
            <%= link_to review.name,review_path(review.id), class: 'text-info' %>
-
          <% else %>
-            <%= link_to review.name, new_user_session_path, class: 'text-info' %>
-            </td>
+           <%= link_to review.name, new_user_session_path, class: 'text-info' %>
          <% end %>
-         <td class="col-4"style= "font-size:14px;">
+         <td class="col-4" style= "font-size:14px;">
           <%= review.address %>
          </td>
-     <% end %>
-        </tr>
+         </tr>
+        <% end %>
       </tbody>
      </table>
          <div style="text-align:right;">
@@ -61,7 +58,7 @@
    </div>
 
    <div class="card col-4 ml-5 mt-4 mb-5 shadow-lg" style="border:none;">
-      <img class="totonoi-img" src="/assets/totonoi.jpeg">
+      <img class="totonoi-img mt-3" src="/assets/totonoi.jpeg">
       <strong class="s" style="text-align:center; margin-top:50px;">~サウナの入り方~</strong>
       <p class="s" style="text-align:center; margin-top:30px; font-size:15px;">若い世代や女性にも人気が広がりつつあるサウナ。</br>
        サウナに入る前に体と頭をきちんと洗い、まずは水分補給。

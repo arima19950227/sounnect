@@ -19,6 +19,11 @@
     <main>
     <%= yield %>
     </main>
+    <span id="back">
+      <%= link_to "#" do %><%= image_tag 'arrow.jpeg', :size => '50x50' %><% end %>
+    </span>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/script.js"></script>
     <%= render 'layouts/footer' %>
   </body>
 </html>
