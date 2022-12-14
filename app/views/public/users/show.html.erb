@@ -1,62 +1,128 @@
 <div><%= flash[:notice] %></div>
-<h1><%= @user.name%>さんの詳細</h1>
-<p><%= image_tag @user.get_profile_image(100,100) %></p>
-<p>ユーザー名</p>
-<p><%= @user.name%></p>
-<p>自己紹介</p>
-<p><%= @user.introduction %></p>
-<p>フォロー</p>
-  <p><%= link_to user_followings_path(@user) do %>
-      <%= @user.followings.count %>
-      <% end %></p>
-    <p>フォロワー</p>
-    <p><%= link_to user_followers_path(@user) do %>
-      <%= @user.followers.count %><% end %></p>
 
-<div class='row'>
- <% if @user == current_user %>
-   <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block col-1" do %>
-    <i class="fas fa-user-cog"></i>
-  <% end %>
- <% else %>
-  <% if current_user.following?(@user) %>
-   <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-sm btn-danger" %>
-  <% else %>
-   <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-success" %>
-  <% end %>
- <% end %>
+<div class="container">
+ <div class="row">
+  <div class="col-4 mr-3 mb-5 mt-5">
+   <h4 class=" text-center">ユーザー情報</h4>
+    <p class="col-12 text-center mt-3"><%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %></p>
 
- <%# showページで見ているユーザーがログインユーザーでない場合%>
- <% unless @user.id == current_user.id %>
- <%# ログインしているユーザーが@userをフォローしている且つ@userがログインしているユーザーをフォローしている場合%>
- <% if (current_user.following? @user) && (@user.following? current_user) %>
- <%# すでにチャットルームが存在している場合%>
- <% if @isRoom == true %>
-  <%= link_to "チャットへ", room_path(@roomId), class: "btn btn-primary btn-lg" %>
- <%#チャットルームが存在しない場合%>
- <% else %>
- <%#　コントローラーにパラメーター￥を送るための記述%>
-  <%= form_for @room do |f| %>
-      <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :user_id, value: @user.id %>
+    <div class="row mt-3">
+     <p class="col-6 text-right">ユーザー名:</p>
+     <p class="col-6"><%= @user.name%></p>
+    </div>
+
+    <%#<p class="mt-3">[フォロー・フォロワー数]</p>#%>
+    <div class="row">
+      <p class="col-6 text-right">
+        <%= link_to user_followings_path(@user) do %>
+          <%= @user.followings.count %>
+        <% end %>フォロー
+      </p>
+      <p class="col-6">
+        <%= link_to user_followers_path(@user) do %>
+          <%= @user.followers.count %>
+         <% end %>フォロワー
+       </p>
+    </div>
+
+    <% if @user.introduction? %>
+       <p class="mt-3">自己紹介</p>
+      <div class="card">
+       <p><%= @user.introduction %></p>
+       </div>
+    <% end %>
+
+    <div class="container mt-3">
+      <div class="row">
+        <% if @user == current_user %>
+          <%= link_to edit_user_path(@user), class: "btn btn-sm btn-info btn-block  mb-3" do %>
+           編集<i class="fas fa-user-cog"></i>
+          <% end %>
+        <% else %>
+          <% if current_user.following?(@user) %>
+            <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-sm btn-danger ml-4 mb-3" %>
+          <% else %>
+            <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn  btn-sm btn-success ml-4 mb-3" %>
+          <% end %>
+        <% end %>
+
+           <%# showページで見ているユーザーがログインユーザーでない場合%>
+          <% unless @user.id == current_user.id %>
+            <%# ログインしているユーザーが@userをフォローしている且つ@userがログインしているユーザーをフォローしている場合%>
+          <% if (current_user.following? @user) && (@user.following? current_user) %>
+             <%# すでにチャットルームが存在している場合%>
+          <% if @isRoom == true %>
+             <%= link_to "チャットへ", room_path(@roomId), class:"btn btn-info btn-sm user-show-chat ml-5 mb-3" %>
+              <%#チャットルームが存在しない場合%>
+           <% else %>
+               <%#　コントローラーにパラメーター￥を送るための記述%>
+              <%= form_for @room do |f| %>
+                <%= fields_for @entry do |e| %>
+                  <%= e.hidden_field :user_id, value: @user.id %>
+                <% end %>
+                <%= f.submit "チャットを始める", class:"btn btn-info btn-sm user-show-chat ml-5"%>
+               <% end %>
+              <% end %>
+             <% end %>
+            <% end %>
+      </div>
+     </div>
+   </div>
+
+    <div class="col-7 ml-4 mb-5 mt-5">
+      <% if @user == current_user %>
+        <h3 class="about_sub">タイムライン</h3>
+      <% else %>
+        <h3 class="about_sub"><%= @user.name %>さんの投稿</h3>
       <% end %>
-      <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
-    <% end %>
-  <% end %>
-  <% end %>
-<% end %>
+     <% if @reviews.present? %>
+      <% @reviews.each do |review| %>
+       <div class="card container shadow rounded-top mb-5 mt-5 p-0" style="width:700px; height:500px;">
+         <%= image_tag review.get_sauna_image(700,700), class: "sauna_image" %>
+         <div class="card-body row-6">
+          <p class="col-12"><%= link_to review.name,review_path(review.id), class: "review_name" %></p>
 
+          <p class="col-12">住所:
+         　　<%= review.address %>
+          </p>
+
+          <p class="col-12">大人一人当たりの金額:
+       　　¥<%= review.price %>円
+          </p>
+
+         [総合評価]
+          <p class="col-12 mt-3 ml-4" id="post_raty<%= review.id %>"></p>
+           <script>
+            $(function(){
+              console.log($('#post_raty<%= review.id %>'));
+            $('#post_raty<%= review.id %>').raty({
+              //星画像の指定などのオプションをここに記述,
+               size     : 36,
+               starOff:  '<%= asset_path('star-off.png') %>',
+               starOn : '<%= asset_path('star-on.png') %>',
+               starHalf: '<%= asset_path('star-half.png') %>',
+               score: <%= review.evaluation %>,
+               readOnly: true,
+                half: true,
+                  });
+                 })
+           </script>
+         </div>
+         <div class="card-body row-6">
+           <p class="text-right mb-5"><%= image_tag review.user.get_profile_image(50,50), class: "rounded-circle" %></br>
+             投稿者:<%= review.user.name %>さん
+           </p>
+         </div>
+       </div>
+        <% end %>
+        <%= paginate @reviews %>
+       <% else %>
+        <p class="card text-center" style="height:300px; padding-top:100px;">
+          表示する内容がありません。</br>
+          新しく投稿するか、ユーザーをフォローして</br>
+          サウナのレビューを見てみよう！
+        </p>
+       <% end %>
+   </div>
+  </div>
 </div>
-<table>
-<tbody>
-    <% @reviews.each do |review| %>
-     <tr>
-       <td><%= image_tag review.get_sauna_image(100,100) %></td>
-       <td><%= link_to review.name,review_path(review.id) %></td>
-       <td><%= review.address %></td>
-       <td><%= review.price %>円</td>
-     </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= paginate @reviews %>

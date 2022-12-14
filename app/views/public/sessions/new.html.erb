@@ -1,27 +1,23 @@
 <div><%= flash[:notice] %></div>
-<h2>ログイン</h2>
+<h2 class="pt-5" style="margin-left:300px;">ログイン</h2>
+
+<div class="container" style="height:500px;">
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+
+  <div class="field row">
+    <%= f.label "メールアドレス", class: "col-4 text-right mb-4 mt-5 about_sub" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "col-4 mb-4 mt-5" %>
   </div>
 
-  <div class="field">
-    <%= f.label "パスワード" %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="field row">
+    <%= f.label "パスワード", class: "col-4 text-right mb-4 about_sub" %><br />
+    <%= f.password_field :password, autocomplete: "current-password",class: "col-4 mb-4" %>
   </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="actions row" style="margin-left:650px;">
+    <%= f.submit "ログイン",class: "btn btn-success" %>
   </div>
 <% end %>
-
-<%= render "public/shared/links" %>
+<p>登録がお済みでない方は<%= link_to "こちら", new_user_registration_path, class:'text-info' %>から新規登録を行なってください。</p>
+</div>

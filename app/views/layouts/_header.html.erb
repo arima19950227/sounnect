@@ -21,10 +21,10 @@
               <% end %>
               <!--顧客側ログイン中のheader-->
               <% if user_signed_in? %> <!--顧客側がログイン中か確認する-->
-                  <li><%= link_to "mypage", user_path(current_user), class: 'nav-link text-white' %></li><!--マイページへのリンク-->
-                  <li><%= link_to "reviews", reviews_path, class: 'nav-link text-white' %></li><!--レビュー一覧へのリンク-->
-                  <li><%= link_to "users", users_path, class: 'nav-link text-white' %></li><!--ユーザー一覧へのリンク-->
-                  <li><%= link_to "log_out", destroy_user_session_path, class: 'nav-link text-white', method: :delete %></li><!--ログアウトへのリンク-->
+                  <li><%= link_to "マイページ", user_path(current_user), class: 'nav-link text-white' %></li><!--マイページへのリンク-->
+                  <li><%= link_to "投稿一覧", reviews_path, class: 'nav-link text-white' %></li><!--レビュー一覧へのリンク-->
+                  <li><%= link_to "ユーザー", users_path, class: 'nav-link text-white' %></li><!--ユーザー一覧へのリンク-->
+                  <li><%= link_to "ログアウト", destroy_user_session_path, class: 'nav-link text-white', method: :delete %></li><!--ログアウトへのリンク-->
               <!--顧客側のheader-->
               <% else %><!--非ログイン時に表示するheader-->
                 <% unless admin_signed_in? %>

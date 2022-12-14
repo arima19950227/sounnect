@@ -1,39 +1,49 @@
-<div class="left-button">
-  <%= link_to "User一覧に戻る", users_path, class:"edit-link" %>
-</div>
-<h4 class="rooms-title">DM</h4>
-<% @entries.each do |e| %>
-  <div class="user-name">
-  <strong>
-    <%= image_tag e.user.profile_image, size:'50x50', class:"user-image" %>
-      <a class="rooms-user-link" href="/users/<%= e.user.id %>">
+<div class="container" style="height:600px;">
+  <h2 class="pt-5 ml-5">ルーム情報</h2>
+ <div class="row">
+   <div class="card rounded-circle col-3 mr-4" style="width:300px; height:280px; background-color:#EEEEEE;">
+    <% @entries.each do |e| %>
+     <div class="user-name text-center mt-4">
+       <p><%= image_tag e.user.profile_image, size:'50x50', class:"user-image rounded-circle " %></p>
+       <a class="rooms-user-link text-dark" href="/users/<%= e.user.id %>">
         <%= e.user.name %>さん
-      </a>
-  </strong>
-  </div>
-<% end %>
-<hr>
-<div class="chats">
-  <div class="chat">
-    <% if @messages.present? %>
-      <% @messages.each do |m| %>
-        <div class="chat-box">
-          <div class="chat-face">
-            <%= image_tag m.user.profile_image, size:'50x50', class:"user-image" %>
+       </a>
+       </p>
+     </div>
+    <% end %>
+   </div>
+  <div class="col-7 ml-5">
+   <h2 class="">メッセージ</h2>
+    <div clsss="container">
+     <div class="row">
+      <div class="chats card col-12">
+       <div class="chat">
+       <% if @messages.present? %>
+        <% @messages.each do |m| %>
+         <div class="chat-box row border-bottom">
+           <div class="chat-face col-4 mt-2">
+            <%= image_tag m.user.profile_image, size:'50x50', class:"user-image rounded-circle mr-3" %>
             <%= m.user.name %>
-          </div>
-          <div class="chat-hukidashi"> <strong><%= m.message %></strong> <br>
-            <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
+           </div>
+          <div class="chat-hukidashi col-8 mt-3"> <strong><%= m.message %></strong>
+            <p class="text-right"><%= m.created_at.strftime("%Y-%m-%d %H:%M")%></p>
           </div>
         </div>
+       <% end %>
+      <% else %>
+        <p class="text-center" style="width:100%; height:200px; padding-top:100px;">まだメッセージがありません</p>
       <% end %>
-    <% end %>
+      </div>
+     </div>
+     <div class="posts col-12">
+      <%= form_for @message do |f| %>
+        <p class="text-right"><%= f.text_area :message, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-area col-6 mt-4" %></p>
+          <%= f.hidden_field :room_id, value: @room.id %>
+        <p class="text-right"><%= f.submit "投稿",class: 'form-submit btn btn-sm btn-info'%></p>
+      <% end %>
+     </div>
+    </div>
+   </div>
   </div>
-  <div class="posts">
-    <%= form_for @message do |f| %>
-      <%= f.text_area :message, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-area" %>
-        <%= f.hidden_field :room_id, value: @room.id %>
-          <%= f.submit "投稿",class: 'form-submit'%>
-    <% end %>
-  </div>
+ </div>
 </div>

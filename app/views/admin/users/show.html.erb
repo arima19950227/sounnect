@@ -1,35 +1,83 @@
-<h1>ユーザー詳細情報</h1>
+
 <div><%= flash[:notice] %></div>
-<p><%= image_tag @user.get_profile_image(100,100) %></p>
-<p>ユーザーID</p>
-<p><%= @user.id%></p>
-<p>ユーザー名</p>
-<p><%= @user.name%></p>
-<p>自己紹介</p>
-<p><%= @user.introduction %></p>
-<p>電話番号</p>
-<p><%= @user.phone_number %></p>
-<p>ユーザーステーテス</p>
-<% if @user.is_deleted %>
-  <p class="text-Secondary">退会</p>
-<% else %>
-  <b class="text-success">有効</b>
-<% end %>
-<%= link_to edit_admin_user_path(@user), class: "btn btn-outline-secondary btn-block col-1" do %>
-<i class="fas fa-user-cog"></i>
-<% end %>
-</div>
-<p>投稿一覧</p>
-<table>
-<tbody>
-    <% @reviews.each do |review| %>
-     <tr>
-       <td><%= image_tag review.get_sauna_image(100,100) %></td>
-       <td><%= link_to review.name,admin_review_path(review.id) %></td>
-       <td><%= review.address %></td>
-       <td><%= review.price %>円</td>
-     </tr>
+
+<div class="container">
+ <div class="row">
+  <div class="col-4 mr-3 mb-5 mt-5">
+   <h4 class=" text-center">管理者/ユーザー情報</h4>
+    <p class="col-12 text-center mt-3"><%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %></p>
+
+    <div class="row mt-3">
+     <p class="col-6 text-right">ユーザー名:</p>
+     <p class="col-6"><%= @user.name%></p>
+    </div>
+
+    <% if @user.introduction? %>
+       <p class="mt-3">自己紹介</p>
+      <div class="card">
+       <p><%= @user.introduction %></p>
+       </div>
     <% end %>
-  </tbody>
-</table>
-<%= paginate @reviews %>
+
+    <div class="container mt-3">
+      <div class="row">
+          <%= link_to edit_admin_user_path(@user), class: "btn btn-sm btn-info btn-block  mb-3" do %>
+           編集<i class="fas fa-user-cog"></i>
+          <% end %>
+      </div>
+     </div>
+   </div>
+
+    <div class="col-7 ml-4 mb-5 mt-5">
+        <h3 class="about_sub"><%= @user.name %>さんの投稿</h3>
+     <% if @reviews.present? %>
+      <% @reviews.each do |review| %>
+       <div class="card container shadow rounded-top mb-5 mt-5 p-0" style="width:700px; height:500px;">
+         <%= image_tag review.get_sauna_image(700,700), class: "sauna_image" %>
+         <div class="card-body row-6">
+          <p class="col-12"><%= link_to review.name,admin_review_path(review.id), class: "review_name" %></p>
+
+          <p class="col-12">住所:
+         　　<%= review.address %>
+          </p>
+
+          <p class="col-12">大人一人当たりの金額:
+       　　¥<%= review.price %>円
+          </p>
+
+         [総合評価]
+          <p class="col-12 mt-3 ml-4" id="post_raty<%= review.id %>"></p>
+           <script>
+            $(function(){
+              console.log($('#post_raty<%= review.id %>'));
+            $('#post_raty<%= review.id %>').raty({
+              //星画像の指定などのオプションをここに記述,
+               size     : 36,
+               starOff:  '<%= asset_path('star-off.png') %>',
+               starOn : '<%= asset_path('star-on.png') %>',
+               starHalf: '<%= asset_path('star-half.png') %>',
+               score: <%= review.evaluation %>,
+               readOnly: true,
+                half: true,
+                  });
+                 })
+           </script>
+         </div>
+         <div class="card-body row-6">
+           <p class="text-right mb-5"><%= image_tag review.user.get_profile_image(50,50), class: "rounded-circle" %></br>
+             投稿者:<%= review.user.name %>さん
+           </p>
+         </div>
+       </div>
+        <% end %>
+        <%= paginate @reviews %>
+       <% else %>
+        <p class="card text-center" style="height:300px; padding-top:100px;">
+          表示する内容がありません。</br>
+          新しく投稿するか、ユーザーをフォローして</br>
+          サウナのレビューを見てみよう！
+        </p>
+       <% end %>
+   </div>
+  </div>
+</div>

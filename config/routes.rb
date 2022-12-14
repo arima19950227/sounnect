@@ -47,7 +47,9 @@ scope module: :public do
       get 'search'
      end
     end
-   resources :reviews, only: [:index,:show,:edit,:update,:destroy]
+   resources :reviews, only: [:index,:show,:edit,:update,:destroy]do
+     resources :comments, only: [:destroy]
+    end
   end
 
   devise_scope :user do

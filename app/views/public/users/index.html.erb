@@ -1,22 +1,28 @@
-
- <%= search_form_for @q do |f| %>
-  <table class='table'>
-  <!--name_contは、あいまい検索を指定-->
-  <%= f.text_field :name_cont %>
-  <%= f.submit "検索" %>
+<div class="user_index">
+ <h1 class="text-center pt-5 about_sub">ユーザーリスト</h1>
+  <%= search_form_for @q do |f| %>
+    <!--name_contは、あいまい検索を指定-->
+    <p class="text-center">ユーザー検索：<%= f.text_field :name_cont, class: "mt-5 mb-5" %>
+    <%= f.submit "検索", class: "ml-3 mr-3 btn btn-sm btn-info" %>
+    </p>
   <% end %>
 <!--検索結果-->
  <% if @users.present? %>
   <!--検索がヒットした場合-->
-  <% @users.each do |user| %>
-  <tr>
-    <td><%= image_tag user.get_profile_image(100,100) %></td>
-   <td><%= link_to user.name, user_path(user.id) %></td>
-   <td><%= user.introduction %></td>
-  </tr>
-   <% end %>
+   <table class='table table-borderless container mb-0'>
+    <tbody class="row ml-5">
+      <% @users.each do |user| %>
+       <tr class="card rounded-circle col-3 mr-4 ml-5 mb-4" style="width:200px; height:280px;">
+        <td class="mx-auto"><%= image_tag user.get_profile_image(100,100), class: "rounded-circle mt-3" %></td>
+        <td class="text-center pb-0"><%= link_to user.name, user_path(user.id), class: "text-dark" %>さん</td>
+        <td class="text-center">フォロー:　<%=user.followings.count%>人</br>
+          フォロワー:　<%= user.followers.count %>人</td>
+       </tr>
+      <% end %>
  <% else %>
   <!--検索がヒットしなかった場合-->
   <p>検索結果はありません</p>
 <% end %>
-</table>
+  </tbody>
+ </table>
+</div>

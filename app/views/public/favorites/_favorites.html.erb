@@ -1,11 +1,11 @@
-<% if review.favorited_by?(current_user) %>
- <p>
-  <%= link_to review_favorite_path(review), class: 'text-danger', method: :delete, remote: true do %>
-  ♥<%= review.favorites.count %>
-  <% end %>
- </p>
-<% else %>
-  <%= link_to review_favorites_path(review), method: :post, remote: true do %>
-  ♡<%= review.favorites.count %>
-  <% end %>
-<% end %>
+<div style="font-size: 20px;">
+ <% if review.favorited_by?(current_user) %>
+   <%= link_to review_favorite_path(review), class: 'text-danger', method: :delete, remote: true do %>
+    　　いいね<i class="bi bi-emoji-heart-eyes-fill ml-2"></i><%= review.favorites.count %>
+    <% end %>
+   <% else %>
+     <%= link_to review_favorites_path(review), method: :post, remote: true, class: "text-dark" do %>
+     　　いいね<i class="bi bi-emoji-heart-eyes text-danger ml-2"></i><%= review.favorites.count %>
+     <% end %>
+ <% end %>
+</div>

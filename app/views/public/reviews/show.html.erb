@@ -3,48 +3,48 @@
 
 <div class ="container">
  <div class="row">
-  <div class="col-9 card mr-3 mb-5 mt-5">
+  <div class="col-9 card mr-3 mb-5 mt-5 p-0">
   <%=image_tag@review.get_sauna_image(700,700), class: "sauna_image"%>
 
    <p class="review_name2 ml-4 mt-4 mb-5">︎<%=@review.name%>の詳細レビュー</p>
  <div class="row">
-  <div class="card col-5 border border-danger ml-5 mr-3">
+  <div class="card col-5 border border-danger ml-5 mr-3 shadow rounded" style="background-color:#FAF0E6">
 
     <h3 class="sauna mt-3">サウナ🔥</h3>
 
     <div class="row">
-     <p class= "about_sub col-5 ml-2 mb-2 mt-3">サウナ広さ:</p>
+     <p class= "s col-5 ml-2 mb-2 mt-3">サウナ広さ:</p>
      <h4 class="sauna_area col-5 mt-3"><%= @review.sauna_area_i18n %></h4>
     </div>
 
      <div class="row">
-     <p class= "about_sub col-4 ml-2 mb-4 mt-3">サウナ温度:</p>
+     <p class= "s col-4 ml-2 mb-4 mt-3">サウナ温度:</p>
      <h5 class="sauna_ondo col-6 mt-3"><%=@review.sauna_temperature_i18n%></h5>
     </div>
 
      <div class="row">
-     <p class= "about_sub col-4 ml-2 mb-2">ロウリュ:</p>
+     <p class= "s col-4 ml-2 mb-2">ロウリュ:</p>
      <h4 class="sauna_area col-7"><%=@review.loryu_type_i18n%></h4>
     </div>
 
     <div class="row">
-     <p class= "about_sub col-5 ml-2 mb-4 mt-3">アウフグース:</p>
+     <p class= "s col-5 ml-2 mb-4 mt-3">アウフグース:</p>
      <h4 class="sauna_area col-5 mt-3 mb-4"><%=@review.aufguss_i18n%></h4>
     </div>
 
 
   </div>
-  <div class=" card col-5 border border-info ml-3 mr-3">
+  <div class=" card col-5 border border-info ml-3 mr-3 shadow rounded" style="background-color:#E0FFFF;">
 
    <h3 class="mizu mt-3">水風呂💧</h3>
 
    <div class="row">
-     <p class= "about_sub col-5 ml-2 mb-2 mt-4 mb-4">水風呂広さ:</p>
+     <p class= "s col-5 ml-2 mb-2 mt-4 mb-4">水風呂広さ:</p>
      <h4 class="sauna_area col-5 mt-4 mb-4"><%=@review.water_area_i18n%></h4>
     </div>
 
    <div class="row">
-     <p class= "about_sub col-4 ml-2 mb-4 mt-5">水風呂温度:</p>
+     <p class= "s col-4 ml-2 mb-4 mt-5">水風呂温度:</p>
      <h4 class="mizu_ondo col-6 mt-5"><%=@review.water_temperature_i18n%></h4>
     </div>
 
@@ -52,28 +52,32 @@
   </div>
 
    <div class="row">
-     <p class= "about_sub col-4 ml-2 mb-4 mt-5 text-right">住所:</p>
+     <p class= "about_sub col-4 ml-5 mb-4 mt-5 text-right">住所:</p>
      <h4 class=" col-7 mt-5"><%= @review.address %></h4>
    </div>
 
-    <div class="row">
+    <div class="row mr-5">
      <p class= "about_sub col-12 ml-2 mb-4 text-right">料金:
      ￥<%= @review.price %>円</p>
     </div>
 
-   <strong class= "ml-2 mb-2"><椅子の数></strong>
-   <p class="mb-2 ml-4" style="font-size:20px;"><%=@review.chair_count_i18n%></p>
+  <div class="card container">
+   <div class="row mt-3">
+   <p class= "col-2 about_sub text-right">椅子の数:</p>
+   <p class="col-2"><%=@review.chair_count_i18n%></p>
+   <p class= "col-2 about_sub" style="font-size:14px;">入浴した時間帯:</p>
+   <p class= "col-2"><%=@review.sauna_time_i18n%></p>
+   <p class= "col-2 about_sub text-right">人の多さ:</p>
+   <p class= "col-2"><%=@review.congestion_i18n%></p>
+    </div>
+  </div>
 
-   <strong class= "ml-2 mb-2"><入浴した時間帯></strong>
-   <p class="mb-2 ml-4" style="font-size:20px;"><%=@review.sauna_time_i18n%></p>
+   <strong class= "ml-5 mb-2 mt-4 about_sub">[メモ]</strong>
+   <div class="card rounded mb-5 mx-auto" style="width:80%;">
+    <p class="mb-2 ml-4" style="font-size:20px;"><%=@review.body%></p>
+   </div>
 
-   <strong class= "ml-2 mb-2"><人の多さ></strong>
-   <p class="mb-2 ml-4" style="font-size:20px;"><%=@review.congestion_i18n%></p>
-
-   <strong class= "ml-2 mb-2"><感想></strong>
-   <p class="mb-2 ml-4" style="font-size:20px;"><%=@review.body%></p>
-
-  <div id="post_raty<%= @review.id %>"></div>
+  <div id="post_raty<%= @review.id %>" class="text-right mr-3">総合評価：</div>
    <script>
    $(function(){
     console.log($('#post_raty<%= @review.id %>'));
@@ -90,25 +94,33 @@
        })
    </script>
   <%= render 'public/favorites/favorites', review: @review %>
-<% if @review.user == current_user %>
-  <%= link_to '編集', edit_review_path(@review), class: "btn btn-sm btn-success" %>
-  <%= link_to '削除', review_path(@review), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
-<% end %>
 
-   <p>コメント一覧</p>
-    <div class= "comment_area">
+ <div>
+  <% if @review.user == current_user %>
+    <%= link_to '編集', edit_review_path(@review), class: "btn btn-sm btn-success" %>
+    <%= link_to '削除', review_path(@review), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+  <% end %>
+ </div>
+
+
+   <p class="ml-5 mt-5">コメント一覧:</p>
+    <div class= "comment_area card mx-auto mb-4" style="width:80%">
       <%= render 'public/comments/comment', review: @review %>
     </div>
+   <p class="ml-5 mt-5">コメントを送る</p>
     <div>
       <%= render 'public/comments/form', review: @review, comment: @comment %>
     </div>
+
 </div>
-  <div class="col-2 card ml-3 mb-5 mt-5">
+  <div class=" col-2  ml-3 mb-5 mt-5">
+  <p>ユーザー情報
    <%=link_to(@review.user)do%>
-    <%=image_tag@review.user.get_profile_image(100,100)%><br>
-    <%=@review.user.name%>
+    <%=image_tag@review.user.get_profile_image(100,100), class: "rounded-circle"%><br>
+    <%=@review.user.name%></p>
    <%end%>
-     <%=@review.user.introduction%>
+     フォロー:　　<%=@review.user.followings.count%>人</br>
+     フォロワー:　<%= @review.user.followers.count %>人
   </div>
  </div>
 </div>
