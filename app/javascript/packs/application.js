@@ -13,7 +13,6 @@ import "skippr.min";
 import "popper.js";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
-// import "./jquery.raty.js"
 
 Rails.start()
 Turbolinks.start()
@@ -21,7 +20,7 @@ ActiveStorage.start()
 
 global.$ = jQuery;
 window.$ = jQuery;
-// require('packs/jquery.raty.js')
+//require('packs/jquery.raty.js')
 import "./jquery.raty.js"
 
 
@@ -39,5 +38,4 @@ $(function() {
     event.preventDefault();
   });
 });
-
 

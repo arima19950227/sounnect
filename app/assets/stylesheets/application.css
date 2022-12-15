@@ -265,3 +265,7 @@ main {
 main {
   background: linear-gradient(#DDFFFF, #FFDBC9);
 }
+
+.fav {
+  font-size: 20px;
+}

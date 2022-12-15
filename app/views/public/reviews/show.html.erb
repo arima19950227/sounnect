@@ -93,7 +93,8 @@
         });
        })
    </script>
-  <%= render 'public/favorites/favorites', review: @review %>
+   <p id= "favorite_buttons_<%= @review.id %>">
+    <%= render 'public/favorites/favorites', review: @review %></p>
 
  <div>
   <% if @review.user == current_user %>

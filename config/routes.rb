@@ -29,7 +29,7 @@ scope module: :public do
    patch "userrs/:id/withdraw" => "users#withdraw", as: "withdraw"
 
    resources :reviews do
-    resources :favorites, only: [:create,:destroy]
+    resource :favorites, only: [:create,:destroy]
      resources :comments, only: [:create,:destroy] do
      resources :comment_favorites, only: [:create,:destroy]
     end
