@@ -5,13 +5,11 @@ class Public::CommentsController < ApplicationController
    comment = current_user.comments.new(comment_params)
    comment.review_id = @review.id
    comment.save
-   redirect_to request.referer
  end
 
  def destroy
   @review = Review.find(params[:review_id])
   Comment.find(params[:id]).destroy
-  redirect_to request.referer
  end
 
 private

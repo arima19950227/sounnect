@@ -16,7 +16,7 @@
     </td>
     <td>
       <% if review_comment.user == current_user %>
-        <%= link_to "消", review_comment_path(review_comment.review, review_comment), class: "btn btn-sm btn-danger", method: :delete %>
+        <%= link_to "消", review_comment_path(review_comment.review, review_comment), class: "btn btn-sm btn-danger", method: :delete, remote: true %>
       <% end %>
     </td>
     </tr>

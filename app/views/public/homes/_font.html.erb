@@ -4,7 +4,7 @@
   <span class="b">U</span>
   <span class="b">N</span>
   <span class="b">A</span>
-  <span class="c">x</span>
+  <span class="c">🤝</span>
   <span class="d">C</span>
   <span class="d">O</span>
   <span class="d">N</span>
@@ -15,14 +15,17 @@
 </h1>
 
 <script>
-const CLASSNAME = "-visible";
-const TIMEOUT = 1500;
-const $target = $(".title");
+$(document).on('turbolinks:load', function() {
+ const CLASSNAME = "-visible";
+ const TIMEOUT = 1500;
+ const $target = $(".title");
 
-setInterval(() => {
+
+  setInterval(() => {
   $target.addClass(CLASSNAME);
   setTimeout(() => {
     $target.removeClass(CLASSNAME);
   }, TIMEOUT);
-}, TIMEOUT * 2);
+ }, TIMEOUT * 2);
+});
 </script>

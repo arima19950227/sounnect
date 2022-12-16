@@ -1,4 +1,4 @@
-# Sounnect
+# Saunnect
 
 ## サイト概要
 ### サイトテーマ

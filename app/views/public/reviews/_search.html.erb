@@ -1,7 +1,7 @@
 <div class="col-4 card mt-5" style="height:920px;">
   <%= form_with  url: reviews_path, method: :get  do |f| %>
 
-  <p class="mt-3 text-center border border-dark about_sub">検索フォーム</p>
+  <p class="mt-3 text-center border border-dark about_sub" style="background-color:#FFE4B5;">検索フォーム</p>
   <p class="mt-5"><%= f.label "施設名:", class: "about_sub" %>
   <%= f.text_field :name, value: @params["name"], class: 'col-12' %></p>
 
@@ -14,7 +14,7 @@
      <p>￥<%= f.text_field :price_max, value: @params["price_max"], class: 'mr-2' %>円より安い</P>
    </div>
 
-  <p style="margin-top:50px; text-align: center;" class="border border-dark about_sub">詳細な条件検索</p>
+  <p style="margin-top:50px; text-align: center; background-color:#FFE4B5;" class="border border-dark about_sub">詳細な条件検索</p>
 
   <p class="mb-3 mt-4"><%= f.label "サウナの広さ:", class: 'mr-3 about_sub' %>
     <%= f.radio_button :sauna_area, 0, {checked: @params["sauna_area"] == "0"}%>

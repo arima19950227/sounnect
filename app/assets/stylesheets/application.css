@@ -27,11 +27,15 @@ main {
 .text1{
   font-size: 180px;
   margin-bottom: 0;
+  font-style: italic;
   font-family: 'Kalam', cursive;
   color: #FF7C00;
   background: -webkit-linear-gradient(top, #FFB76B 0%, #FFA73D 50%, #FF7C00 51%, #FF7F04 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow:0 0 30px #FFA73D;
+  -webkit-text-stroke: 1px #FFF;
+
 }
 
 .title {
@@ -95,18 +99,18 @@ main {
 
 .a {
    font-size: 30px;
-  margin-bottom: 0;
-  font-family: 'Kalam', cursive;
-  color: #FF7C00;
-  background: -webkit-linear-gradient(top, #FFB76B 0%, #FFA73D 50%, #FF7C00 51%, #FF7F04 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+   margin-bottom: 0;
+   font-family: 'Kalam', cursive;
+   color: black;
+   -webkit-text-stroke: 1px white;
+
+
 }
 
 .b {
   color: #FFA73D;
   font-family: 'Kalam', cursive;
-
+   -webkit-text-stroke: 0.5px black;
 }
 
 .c {
@@ -116,6 +120,7 @@ main {
 .d {
   color: #FF7F04;
   font-family: 'Kalam', cursive;
+  -webkit-text-stroke: 0.5px black;
 }
 
 .s {
@@ -263,9 +268,26 @@ main {
 }
 
 main {
-  background: linear-gradient(#DDFFFF, #FFDBC9);
+  background: linear-gradient(#FFFAF0, #DEB887);
 }
 
 .fav {
   font-size: 20px;
+}
+
+.unsub {
+  height:400px;
+}
+
+.nav-link{
+   font-size: 20px;
+   font-family: 'Mochiy Pop One', sans-serif;
+   margin-bottom: 0;
+   color: black;
+   -webkit-text-stroke: 0.4px white;
+}
+
+.head_foot {
+  background-image: url(header2.jpeg);
+  background-size: cover;
 }

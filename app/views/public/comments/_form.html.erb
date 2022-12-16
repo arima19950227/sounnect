@@ -1,5 +1,5 @@
  <div class="mx-auto" style="width:80%;">
-   <%= form_with(model: [review, comment], local: true) do |f| %>
+   <%= form_with(model: [review, comment], local: false) do |f| %>
     <%= f.text_area :comment, class: 'form-control' %>
     </br>
     <p class="text-right"><%= f.submit "送信する", class: 'btn btn-info mb-5' %></p>

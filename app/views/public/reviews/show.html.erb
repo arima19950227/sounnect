@@ -77,10 +77,12 @@
     <p class="mb-2 ml-4" style="font-size:20px;"><%=@review.body%></p>
    </div>
 
-  <div id="post_raty<%= @review.id %>" class="text-right mr-3">総合評価：</div>
+  <p class="text-right mr-5">[総合評価]</p>
+  <div id="post_raty<%= @review.id %>" class="text-right mr-3"></div>
    <script>
    $(function(){
     console.log($('#post_raty<%= @review.id %>'));
+     $('#post_raty<%= @review.id %>').empty();
      $('#post_raty<%= @review.id %>').raty({
       //星画像の指定などのオプションをここに記述,
        size     : 36,
@@ -106,7 +108,7 @@
 
    <p class="ml-5 mt-5">コメント一覧:</p>
     <div class= "comment_area card mx-auto mb-4" style="width:80%">
-      <%= render 'public/comments/comment', review: @review %>
+      <p class="comment_area"><%= render 'public/comments/comment', review: @review %></p>
     </div>
    <p class="ml-5 mt-5">コメントを送る</p>
     <div>

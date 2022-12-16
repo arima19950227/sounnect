@@ -79,8 +79,8 @@
 
        <div class="form-group row">
 
+        <p class="about_sub mr-2">[星評価]</p>
         <div id="post_raty">
-         <%= f.label :evaluation, "星評価：" %>
          <%= f.hidden_field :evaluation, id: :review_star %>
         </div>
         <%#= javascript_include_tag 'jquery.raty.js' %>
@@ -89,6 +89,7 @@
           // let elem = document.querySelector('#post_raty');
           $(function(){
            console.log($('#post_raty'));
+           $('#post_raty').empty();
            $('#post_raty').raty({
            //星画像の指定などのオプションをここに記述,
            size     : 36,

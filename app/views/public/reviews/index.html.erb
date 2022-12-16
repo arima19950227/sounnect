@@ -23,6 +23,7 @@
         <script>
           $(function(){
            console.log($('#post_raty<%= review.id %>'));
+          $('#post_raty<%= review.id %>').empty();
           $('#post_raty<%= review.id %>').raty({
             //星画像の指定などのオプションをここに記述,
            size     : 36,

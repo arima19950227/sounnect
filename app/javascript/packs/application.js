@@ -30,7 +30,7 @@ import "./jquery.raty.js"
 //   raty.init();
 //   return raty;
 // }
-$(function() {
+$(document).on('turbolinks:load',function() {
   $('#back a').on('click',function(event){
     $('body, html').animate({
       scrollTop:0
@@ -38,4 +38,5 @@ $(function() {
     event.preventDefault();
   });
 });
+
 
