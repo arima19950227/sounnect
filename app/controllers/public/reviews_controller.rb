@@ -1,5 +1,4 @@
 class Public::ReviewsController < ApplicationController
-
   def index
     # distinct: trueは重複したデータを除外/検索結果の表示
     @params = params

@@ -29,7 +29,7 @@
               <% else %><!--非ログイン時に表示するheader-->
                 <% unless admin_signed_in? %>
                   <li><%= link_to "saunnectとは？", about_path, 'data-turbolinks': false, class: 'nav-link' %></li><!--aboutへのリンク-->
-                  <li><%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-white' %></li><!--新規登録へのリンク-->
+                  <li><%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %></li><!--新規登録へのリンク-->
                   <li><%= link_to "ログイン", new_user_session_path, class: 'nav-link' %></li><!--ログイン画面へのリンク-->
                   <li><%= link_to 'ゲスト', guest_path, method: :post, class: 'nav-link' %></li>
                 <% end %>

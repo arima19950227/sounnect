@@ -19,6 +19,14 @@
        </div>
     <% end %>
 
+    <div class="row mt-3" style="margin-left:80px;">
+     <% if @user.is_deleted %>
+      ユーザーステータス：<p class="text-Secondary">退会</p>
+     <% else %>
+      ユーザーステータス：<p class="text-success">有効</p>
+     <% end %>
+    </div>
+
     <div class="container mt-3">
       <div class="row">
           <%= link_to edit_admin_user_path(@user), class: "btn btn-sm btn-info btn-block  mb-3" do %>
@@ -50,6 +58,7 @@
            <script>
             $(function(){
               console.log($('#post_raty<%= review.id %>'));
+            $('#post_raty<%= review.id %>').empty();
             $('#post_raty<%= review.id %>').raty({
               //星画像の指定などのオプションをここに記述,
                size     : 36,

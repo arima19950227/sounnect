@@ -7,7 +7,7 @@
  </div>
  <div class="row mt-5 mb-5">
   <div class="col" style="padding-left:300px;">
-   <%= link_to "退会しない", root_path, class: "btn btn-success " %>
+   <%= link_to "退会しない", user_path(@user), class: "btn btn-success " %>
   </div>
   <div class="col" style="padding-right:300px;">
    <%= link_to "退会する", withdraw_path, method: :patch, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？再度利用するには新規登録が必要になります" %>

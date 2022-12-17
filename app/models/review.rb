@@ -1,6 +1,6 @@
 class Review < ApplicationRecord
 
-  has_one_attached :sauna_image
+  has_one_attached :sauna_image, dependent: :destroy
 
   belongs_to :user
   has_many :favorites, dependent: :destroy
@@ -27,7 +27,7 @@ class Review < ApplicationRecord
     file_path = Rails.root.join('app/assets/images/no_image.jpeg')
     sauna_image.attach(io: File.open(file_path), filename: 'no_image.jpeg', content_type: 'image/jpeg')
   end
-  sauna_image.variant(resize_to_limit: [width, height]).processed
+    sauna_image.variant(resize_to_limit: [width, height]).processed
   end
 
   validates :name, presence: true, length: { maximum: 30 }
@@ -43,5 +43,6 @@ class Review < ApplicationRecord
   validates :body, presence: true
   validates :sauna_time, presence: true
   validates :congestion, presence: true
-
+  validates :sauna_image, presence: true, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
+  validates :evaluation, presence:true
 end

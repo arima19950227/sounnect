@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  has_one_attached :profile_image
+  has_one_attached :profile_image, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :reviews, dependent: :destroy
@@ -57,5 +57,5 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :phone_number, presence: true, length: { is: 11 }, uniqueness: true, numericality: {only_integer: true}
   validates :introduction, length: { maximum: 200 }
-
+  validates :profile_image, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
 end

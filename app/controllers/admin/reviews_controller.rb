@@ -1,6 +1,5 @@
 class Admin::ReviewsController < ApplicationController
-
-
+  before_action :authenticate_admin!
   def index
     @params = params
     if params[:address]
@@ -40,7 +39,7 @@ class Admin::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
     flash[:notice] = "投稿を削除しました"
-    redirect_to reviews_path
+    redirect_to admin_reviews_path
 
   end
 
