@@ -290,3 +290,7 @@ main {
   background-image: url(header2.jpeg);
   background-size: cover;
  }
+
+ .admin_top {
+   height:700px;
+ }
