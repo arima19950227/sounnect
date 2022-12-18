@@ -17,7 +17,7 @@ scope module: :public do
    root to: "homes#top"
    get "about" => "homes#about"
 
-   resources :users, only: [:index,:show,:edit,:update] do
+   resources :users, only: [:show,:edit,:update] do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
@@ -25,8 +25,9 @@ scope module: :public do
       get 'search'
      end
   end
+   get '/users_index' => 'users#index', as: 'users'
    get "users/:id/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
-   patch "userrs/:id/withdraw" => "users#withdraw", as: "withdraw"
+   patch "users/:id/withdraw" => "users#withdraw", as: "withdraw"
 
    resources :reviews do
     resource :favorites, only: [:create,:destroy]
@@ -53,6 +54,7 @@ scope module: :public do
 
   devise_scope :user do
    post 'users/guest_sign_in' => 'public/sessions#new_guest', as: 'guest'
+   get '/users' => 'public/registrations#new'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
