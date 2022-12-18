@@ -6,5 +6,5 @@
    <% else %>
      <%= link_to review_favorites_path(review), class: "text-dark fav", method: :post, remote: true do %>
      　　いいね<i class="bi bi-emoji-heart-eyes text-danger ml-2"></i>　<%= review.favorites.count %>
-     <% end %>
- <% end %>
+    <% end %>
+<% end %>

@@ -2,7 +2,7 @@
 
 <h1 class="x active mx-auto">︎サウナレビュー投稿一覧︎︎</h1>
 <%= link_to "レビューを投稿する", new_review_path, class: "btn-push" %>
- <div class="container">
+<div class="container">
   <div class="row">
    <div class="col-8">
     <% if @reviews.present? %>
@@ -49,7 +49,6 @@
     <% end %>
      <%= paginate @reviews %>
    </div>
-  <%= render 'public/reviews/search'%>
-
-</div>
+   <%= render 'public/reviews/search'%>
+  </div>
 </div>
