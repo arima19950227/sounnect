@@ -1,13 +1,15 @@
 <div><%= flash[:notice] %></div>
 
 <h1 class="x active mx-auto">︎サウナレビュー投稿一覧︎︎</h1>
-<%= link_to "レビューを投稿する", new_review_path, class: "btn-push" %>
+  <%= link_to "レビューを投稿する", new_review_path, class: "btn-push" %>
 <div class="container">
   <div class="row">
    <div class="col-8">
     <% if @reviews.present? %>
+      <p class="mb-2 col-12 text-right mt-3"><%= link_to '新しい順', reviews_path(latest: "true"), class: "text-dark border-bottom border-dark" %>|
+       <%= link_to '評価の高い順', reviews_path(star_count: "true"), class: "text-dark border-bottom border-dark" %></p>
      <% @reviews.each do |review| %>
-     <div class="card container shadow rounded-top mb-5 mt-5 p-0" style="width:700px; height:500px;">
+     <div class="card container shadow rounded-top mb-5 p-0" style="width:700px; height:500px;">
        <%= image_tag review.get_sauna_image(700,700), class: "sauna_image" %>
       <div class="card-body row-6">
        <p class="col-12"><%= link_to review.name,review_path(review.id), class: "review_name" %></p>

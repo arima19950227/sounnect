@@ -2,7 +2,12 @@ class Public::ReviewsController < ApplicationController
   def index
     # distinct: trueは重複したデータを除外/検索結果の表示
     @params = params
-    if params[:address]
+    if params[:latest]
+      @reviews = Review.latest.page(params[:page])
+    elsif params[:star_count]
+      @reviews = Review.star_count.page(params[:page])
+    else
+     if params[:address]
         if params[:price_min] == "" ||  params[:price_max] == ""
           @reviews = Review.where(['name LIKE(?) and address LIKE(?) and sauna_area  LIKE(?) and sauna_temperature LIKE(?) and loryu_type LIKE(?) and aufguss LIKE(?) and water_area LIKE(?) and water_temperature LIKE(?)', "%#{params[:name]}%", "%#{params[:address]}%" , "%#{params[:sauna_area]}%", "%#{params[:sauna_temperature]}%", "%#{params[:loryu_type]}%", "%#{params[:aufguss]}%", "%#{params[:water_area]}%", "%#{params[:water_temperature]}%"])
           .page(params[:page]).order(created_at: :desc)
@@ -13,6 +18,7 @@ class Public::ReviewsController < ApplicationController
     else
         @reviews =  Review.page(params[:page]).order(created_at: :desc)
     end
+   end
   end
 
 

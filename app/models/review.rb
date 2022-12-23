@@ -45,4 +45,7 @@ class Review < ApplicationRecord
   validates :congestion, presence: true
   validates :sauna_image, presence: true, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
   validates :evaluation, presence:true
+
+  scope :latest, -> {order(created_at: :desc)}
+  scope :star_count, -> {order(evaluation: :desc)}
 end
