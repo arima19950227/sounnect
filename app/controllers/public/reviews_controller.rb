@@ -15,10 +15,10 @@ class Public::ReviewsController < ApplicationController
           @reviews  = Review.where(['name LIKE(?) and address LIKE(?) and sauna_area  LIKE(?) and sauna_temperature LIKE(?) and loryu_type LIKE(?) and aufguss LIKE(?) and water_area LIKE(?) and water_temperature LIKE(?)', "%#{params[:name]}%", "%#{params[:address]}%" , "%#{params[:sauna_area]}%", "%#{params[:sauna_temperature]}%", "%#{params[:loryu_type]}%", "%#{params[:aufguss]}%", "%#{params[:water_area]}%", "%#{params[:water_temperature]}%"])
           .where(price: (params[:price_min])..(params[:price_max])).page(params[:page]).order(created_at: :desc)
         end
-    else
+     else
         @reviews =  Review.page(params[:page]).order(created_at: :desc)
+     end
     end
-   end
   end
 
 
