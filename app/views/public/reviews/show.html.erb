@@ -95,6 +95,7 @@
         });
        })
    </script>
+   <p class="mb-2 view_count">閲覧数: <i class="bi bi-eyeglasses"></i>　<%= @review.view_counts.count %></p>
    <p id= "favorite_buttons_<%= @review.id %>">
     <%= render 'public/favorites/favorites', review: @review %></p>
 

@@ -294,3 +294,9 @@ main {
  .admin_top {
    height:700px;
  }
+
+ .view_count {
+   font-size: 20px;
+   margin-left: 40px;
+ }
+

@@ -39,6 +39,9 @@ class Public::ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
+    unless ViewCount.find_by(user_id: current_user.id, review_id: @review.id)
+      current_user.view_counts.create(review_id: @review.id)
+    end
     @comment = Comment.new
 
   end
