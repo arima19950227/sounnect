@@ -1,6 +1,6 @@
 <header>
-  <nav class="navbar navbar-expand-lg head_foot">
-    <div class="container" style='height:70px'>
+  <nav class="navbar navbar-expand-lg navbar-light head_foot">
+    <div class="container">
           <!--管理側でのheader-->
            <% if admin_signed_in? %>
              <%= link_to "Sauunect", admin_root_path, class: "a" %>
@@ -10,7 +10,6 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><!--レスポンシブ対応の展開ボタン-->
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="row">
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %> <!--管理者側がログイン中か確認する-->
@@ -20,20 +19,21 @@
               <% end %>
               <!--顧客側ログイン中のheader-->
               <% if user_signed_in? %> <!--顧客側がログイン中か確認する-->
-                  <li><%= link_to "マイページ", user_path(current_user), class: 'nav-link' %></li><!--マイページへのリンク-->
-                  <li><%= link_to "投稿一覧", reviews_path, class: 'nav-link' %></li><!--レビュー一覧へのリンク-->
-                  <li><%= link_to "ユーザー", users_path, class: 'nav-link' %></li><!--ユーザー一覧へのリンク-->
-                  <li><%= link_to "ログアウト", destroy_user_session_path, class: 'nav-link', method: :delete %></li><!--ログアウトへのリンク-->
+                  <li><%= link_to "マイページ", user_path(current_user), class: 'nav-link bi bi-person-lines-fill' %></li><!--マイページへのリンク-->
+                  <li><%= link_to "投稿一覧", reviews_path, class: 'nav-link bi bi-book-half' %></li><!--レビュー一覧へのリンク-->
+                  <li><%= link_to "ユーザー", users_path, class: 'nav-link bi bi-people-fill' %></li><!--ユーザー一覧へのリンク-->
+                  <li><%= link_to "ログアウト", destroy_user_session_path, class: 'nav-link bi bi-door-open-fill', method: :delete %></li><!--ログアウトへのリンク-->
               <!--顧客側のheader-->
               <% else %><!--非ログイン時に表示するheader-->
                 <% unless admin_signed_in? %>
                   <li><%= link_to "saunnectとは？", about_path, 'data-turbolinks': false, class: 'nav-link' %></li><!--aboutへのリンク-->
-                  <li><%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %></li><!--新規登録へのリンク-->
-                  <li><%= link_to "ログイン", new_user_session_path, class: 'nav-link' %></li><!--ログイン画面へのリンク-->
-                  <li><%= link_to 'ゲスト', guest_path, method: :post, class: 'nav-link' %></li>
+                  <li><%= link_to "新規登録", new_user_registration_path, class: 'nav-link bi bi-person-plus-fill' %></li><!--新規登録へのリンク-->
+                  <li><%= link_to "ログイン", new_user_session_path, class: 'nav-link bi bi-box-arrow-in-right' %></li><!--ログイン画面へのリンク-->
+                  <li><%= link_to 'ゲスト', guest_path, method: :post, class: 'nav-link bi bi-wrench-adjustable' %></li>
                 <% end %>
               <% end %>
             </ul>
+        </div>
     </div>
   </nav>
 </header>

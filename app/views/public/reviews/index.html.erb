@@ -42,7 +42,7 @@
        <div class="card-body row-6">
          <p class="text-right mb-5"><%= image_tag review.user.get_profile_image(50,50), class: "rounded-circle" %></br>
          投稿者:<%= review.user.name %>さん</p>
-        </div>
+       </div>
      </div>
      <% end %>
     <% else %>
@@ -54,3 +54,4 @@
    <%= render 'public/reviews/search'%>
   </div>
 </div>
+

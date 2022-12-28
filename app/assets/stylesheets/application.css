@@ -300,3 +300,45 @@ main {
    margin-left: 40px;
  }
 
+@media screen and (max-width:1024px) {
+  .text1{
+   font-size: 100px;
+ }
+  .title {
+    font-size: 30px;
+  }
+  .text2 {
+    font-size: 5px;
+  }
+
+}
+
+
+@media screen and (max-width:768px){
+  .text1{
+   font-size: 70px;
+ }
+  .title {
+    font-size: 20px;
+  }
+  .text3 {
+    font-size: 15px;
+  }
+
+}
+
+@media screen and (max-width:425px) {
+  .text1{
+   font-size: 50px;
+ }
+   .title {
+    font-size: 17px;
+    margin-top: 15px;
+    margin-left: 10px;
+  }
+  
+  
+}
+
+@media screen and (max-width:320px) {
+}
