@@ -351,8 +351,27 @@ main {
   .box {
     height: 60px;
   }
+  .top_title{
+    font-size: 3px;
+  }
+  
+  #back {
+    
+  }
 
 }
 
-@media screen and (max-width:320px) {
+@media screen and (max-width:375px) {
+   .text1{
+   font-size: 30px;
+ }
+   .title {
+    font-size: 10px;
+   }
+
+   .top1 {
+     text-align: center;
+   }
+
+
 }
