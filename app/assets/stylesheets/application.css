@@ -329,15 +329,29 @@ main {
 
 @media screen and (max-width:425px) {
   .text1{
-   font-size: 50px;
+   font-size: 40px;
  }
    .title {
     font-size: 17px;
     margin-top: 15px;
     margin-left: 10px;
   }
-  
-  
+
+   .text3 {
+    font-size: 3px;
+
+  }
+
+  .text2 {
+    font-size: 0.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+  }
+  .box {
+    height: 60px;
+  }
+
 }
 
 @media screen and (max-width:320px) {
