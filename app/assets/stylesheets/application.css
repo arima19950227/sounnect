@@ -300,6 +300,10 @@ main {
    margin-left: 40px;
  }
 
+ .about_connect {
+   margin-left: 100px;
+ }
+
 @media screen and (max-width:1024px) {
   .text1{
    font-size: 100px;
@@ -309,6 +313,14 @@ main {
   }
   .text2 {
     font-size: 5px;
+  }
+
+  .about_connect {
+    margin-left: 100px;
+  }
+
+  .about_info {
+    margin-left: 50px;
   }
 
 }
@@ -323,6 +335,14 @@ main {
   }
   .text3 {
     font-size: 15px;
+  }
+
+  .about_connect {
+    margin-left: 200px;
+  }
+
+  .about_info {
+    margin-left: 200px;
   }
 
 }
@@ -354,9 +374,15 @@ main {
   .top_title{
     font-size: 3px;
   }
-  
-  #back {
-    
+
+  .about_connect {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  .about_info {
+    margin-left: 50px;
+    margin-right: 50px;
   }
 
 }
