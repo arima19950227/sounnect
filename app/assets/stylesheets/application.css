@@ -146,6 +146,11 @@ main {
   font-family: 'Mochiy Pop One', sans-serif;
 }
 
+.list {
+  font-family: 'Mochiy Pop One', sans-serif;
+  text-align: right;
+}
+
 .review_name {
   color: #006600;
   font-size: 32px;
@@ -191,7 +196,6 @@ main {
   padding: 10px 24px;
   border-radius: 4px;
   border-bottom: 4px solid #d37800;
-  margin-left: 170px;
 }
 
 .btn-push:active {
@@ -304,6 +308,20 @@ main {
    margin-left: 100px;
  }
 
+ .actions{
+   margin-left: 650px;
+ }
+
+ .login {
+   text-align: center;
+ }
+
+ .timeline {
+   /*height: 500px;*/
+   width: 700px;
+ }
+
+
 @media screen and (max-width:1024px) {
   .text1{
    font-size: 100px;
@@ -323,8 +341,25 @@ main {
     margin-left: 50px;
   }
 
-}
+  .actions{
+   margin-left: 500px;
+ }
 
+  .timeline {
+   /*height: 400px;*/
+   width: 100%;
+  }
+
+  .review_name {
+    font-size: 20px;
+  }
+
+  .sub {
+    font-size: 15px;
+  }
+
+
+}
 
 @media screen and (max-width:768px){
   .text1{
@@ -345,7 +380,9 @@ main {
     margin-left: 200px;
   }
 
-}
+  .about_sub {
+    font-size: 26px;
+  }
 
 @media screen and (max-width:425px) {
   .text1{
@@ -385,6 +422,20 @@ main {
     margin-right: 50px;
   }
 
+  .actions{
+   margin-left: 300px;
+ }
+
+ .list {
+   text-align: left;
+ }
+
+ .form_new {
+   width: 70%;
+   margin-left: 20px;
+ }
+
+
 }
 
 @media screen and (max-width:375px) {
@@ -399,5 +450,8 @@ main {
      text-align: center;
    }
 
+   .actions{
+   margin-left: 200px;
+ }
 
 }

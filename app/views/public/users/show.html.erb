@@ -2,7 +2,7 @@
 
 <div class="container">
  <div class="row">
-  <div class="col-4 mr-3 mb-5 mt-5">
+  <div class="col-sm-4 mr-sm-3 mb-5 pt-5">
    <h4 class=" text-center">ユーザー情報</h4>
     <p class="col-12 text-center mt-3"><%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %></p>
 
@@ -69,11 +69,13 @@
      </div>
    </div>
 
-    <div class="col-7 ml-4 mb-5 mt-5">
+    <div class="col-sm-7 ml-sm-4 mb-5 mt-5">
       <% if @user == current_user %>
-      <div class="row">
+      <div class="container">
+       <div class="row">
         <h3 class="about_sub col-6">タイムライン</h3>
-        <%= link_to "レビューを投稿する", new_review_path, class: "btn-push" %>
+        <%= link_to "レビューを投稿する", new_review_path, class: "btn-push col-6 text-center" %>
+       </div>
       </div>
       <% if @reviews.present? %>
       <%= render 'public/users/user_review_index', reviews: @reviews %>

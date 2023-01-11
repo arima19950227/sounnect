@@ -1,19 +1,24 @@
       <% reviews.each do |review| %>
-       <div class="card container shadow rounded-top mb-5 mt-5 p-0" style="width:700px; height:500px;">
+       <div class="card shadow rounded-top mb-5 mt-5 p-0 timeline">
          <%= image_tag review.get_sauna_image(700,700), class: "sauna_image" %>
-         <div class="card-body row-6">
+         <div class="card-body row">
           <p class="col-12"><%= link_to review.name,review_path(review.id), class: "review_name" %></p>
 
-          <p class="col-12">住所:
+          <p class="col-12 sub">住所:
          　　<%= review.address %>
           </p>
 
-          <p class="col-12">大人一人当たりの金額:
+          <p class="col-12 sub">大人一人当たりの金額:
        　　¥<%= review.price %>円
           </p>
 
-         [総合評価]
-          <p class="col-12 mt-3 ml-4" id="post_raty<%= review.id %>"></p>
+         <p class="col-12 sub">[総合評価]</p>
+         <p class="col-6 raty" id="post_raty<%= review.id %>"></p>
+         <div class="col-6">
+           <p class="text-right mr-2"><%= image_tag review.user.get_profile_image(50,50), class: "rounded-circle" %></br>
+             投稿者:<%= review.user.name %>さん
+           </p>
+         </div>
            <script>
             $(function(){
               console.log($('#post_raty<%= review.id %>'));
@@ -30,11 +35,6 @@
                   });
                  })
            </script>
-         </div>
-         <div class="card-body row-6">
-           <p class="text-right mb-5"><%= image_tag review.user.get_profile_image(50,50), class: "rounded-circle" %></br>
-             投稿者:<%= review.user.name %>さん
-           </p>
          </div>
        </div>
         <% end %>
