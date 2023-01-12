@@ -3,7 +3,7 @@ class CreateReviews < ActiveRecord::Migration[6.1]
     create_table :reviews do |t|
       t.integer :user_id, null:false
       t.string :name, null: false
-      t.text :address, null: false
+      t.string :address, null: false
       t.integer :sauna_area, null:false
       t.integer :sauna_temperature, null:false
       t.integer :loryu_type, null:false

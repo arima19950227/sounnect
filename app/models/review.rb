@@ -8,6 +8,9 @@ class Review < ApplicationRecord
   has_many :view_counts, dependent: :destroy
   #has_many :comment_favorite, dependent: :destroy
 
+  geocoded_by :address
+  after_validation :geocode
+
   enum sauna_area: { small: 0, usually: 1, wide: 2 }, _prefix: true
   enum sauna_temperature: { cold: 0, mild: 1, usually: 2, hot:3 }, _prefix: true
   enum loryu_type: { auto: 0, normal: 1, nothing: 2 }, _prefix: true
@@ -49,4 +52,5 @@ class Review < ApplicationRecord
 
   scope :latest, -> {order(created_at: :desc)}
   scope :star_count, -> {order(evaluation: :desc)}
+
 end

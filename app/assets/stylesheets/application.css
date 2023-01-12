@@ -146,6 +146,10 @@ main {
   font-family: 'Mochiy Pop One', sans-serif;
 }
 
+.search_colum {
+  font-family: 'Mochiy Pop One', sans-serif;
+}
+
 .list {
   font-family: 'Mochiy Pop One', sans-serif;
   text-align: right;
@@ -166,11 +170,11 @@ main {
 .x {
   font-family: 'Mochiy Pop One', sans-serif;
   padding-top: 50px;
-  width:500px;
   animation-name: fadeInAnime;
   animation-duration:3s;
   animation-fill-mode:forwards;
   opacity: 0;
+  text-align: center;
  }
 
 @keyframes fadeInAnime{
@@ -254,6 +258,7 @@ main {
 
 .sauna_area{
   font-family: 'Mochiy Pop One', sans-serif;
+  font-size: 20px;
 
 }
 
@@ -435,6 +440,14 @@ main {
    margin-left: 20px;
  }
 
+ .x {
+   font-size: 26px;
+   text-align: center;
+ }
+
+ .review_name2 {
+   font-size: 28px;
+ }
 
 }
 
@@ -453,5 +466,4 @@ main {
    .actions{
    margin-left: 200px;
  }
-
 }

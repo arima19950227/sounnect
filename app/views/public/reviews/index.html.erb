@@ -1,17 +1,19 @@
 <div><%= flash[:notice] %></div>
 
-<h1 class="x active mx-auto">︎サウナレビュー投稿一覧︎︎</h1>
-  <%= link_to "レビューを投稿する", new_review_path, class: "btn-push" %>
+<h1 class="x active">︎サウナレビュー投稿一覧︎︎</h1>
 <div class="container">
   <div class="row">
-   <div class="col-8">
+   <div class="col-sm-8">
+    <%= link_to "レビューを投稿する", new_review_path, class: "btn-push" %>
     <% if @reviews.present? %>
       <p class="mb-2 col-12 text-right mt-3"><%= link_to '新しい順', reviews_path(latest: "true"), class: "text-dark border-bottom border-dark" %>|
        <%= link_to '評価の高い順', reviews_path(star_count: "true"), class: "text-dark border-bottom border-dark" %></p>
      <% @reviews.each do |review| %>
-     <div class="card container shadow rounded-top mb-5 p-0" style="width:700px; height:500px;">
-       <%= image_tag review.get_sauna_image(700,700), class: "sauna_image" %>
-      <div class="card-body row-6">
+     <div class="card shadow rounded-top mb-5 p-0">
+      <div class="card-body row">
+       <%= image_tag review.get_sauna_image(600,600), class: "col-6" %>
+       <div id="map-<%=review.id%>" class="col-6"></div>
+
        <p class="col-12"><%= link_to review.name,review_path(review.id), class: "review_name" %></p>
 
        <p class="col-12">住所:
@@ -20,8 +22,12 @@
        <p class="col-12">大人一人当たりの金額:
        　　¥<%= review.price %>円</p>
 
-       [総合評価]
-       <p class="col-12 mt-3 ml-4" id="post_raty<%= review.id %>"></p>
+       <p class="col-12 sub">[総合評価]</p>
+       <p class="col-6" id="post_raty<%= review.id %>"></p>
+        <div class="col-6">
+          <p class="text-right"><%= image_tag review.user.get_profile_image(50,50), class: "rounded-circle" %></br>
+            投稿者:<%= review.user.name %>さん</p>
+          </div>
         <script>
           $(function(){
            console.log($('#post_raty<%= review.id %>'));
@@ -39,10 +45,6 @@
            })
         </script>
        </div>
-       <div class="card-body row-6">
-         <p class="text-right mb-5"><%= image_tag review.user.get_profile_image(50,50), class: "rounded-circle" %></br>
-         投稿者:<%= review.user.name %>さん</p>
-       </div>
      </div>
      <% end %>
     <% else %>
@@ -54,4 +56,41 @@
    <%= render 'public/reviews/search'%>
   </div>
 </div>
+
+<script>
+function initMap(){
+ <% @reviews.each do |review| %>
+ createMap(document.getElementById('map-<%=review.id%>'), <%= review.latitude || 0 %>, <%= review.longitude || 0 %>, "<%= review.address %>");
+ <% end %>
+}
+
+function createMap(element, latitude, longitude, address)
+{
+// 地図の位置情報(緯度・経度)を取得
+ let mapPosition = {lat: latitude , lng: longitude };
+ let map = new google.maps.Map(element, {
+  zoom: 15,
+  center: mapPosition
+    });
+  let transitLayer = new google.maps.TransitLayer();
+  transitLayer.setMap(map);
+
+  let contentString = '【住所】' + address;
+  let infowindow = new google.maps.InfoWindow({
+   content: contentString
+    });
+  if (latitude != 0 && longitude != 0) {
+   let marker = new google.maps.Marker({
+   position: mapPosition,
+    map: map,
+    title: contentString
+      });
+
+     marker.addListener('click', function(){
+     infowindow.open(map, marker);
+      });
+     }
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
 

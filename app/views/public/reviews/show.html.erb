@@ -3,78 +3,72 @@
 
 <div class ="container">
  <div class="row">
-  <div class="col-9 card mr-3 mb-5 mt-5 p-0">
-  <%=image_tag@review.get_sauna_image(700,700), class: "sauna_image"%>
-
+  <div class="col-md-9 card mb-5 mt-5">
+   <%=image_tag@review.get_sauna_image(700,700), class: "sauna_image"%>
    <p class="review_name2 ml-4 mt-4 mb-5">︎<%=@review.name%>の詳細レビュー</p>
- <div class="row">
-  <div class="card col-5 border border-danger ml-5 mr-3 shadow rounded" style="background-color:#FAF0E6">
-
+  <div class="row">
+   <div class="card col-md-6 border border-danger shadow rounded m-2" style="background-color:#FAF0E6">
     <h3 class="sauna mt-3">サウナ🔥</h3>
-
     <div class="row">
      <p class= "s col-5 ml-2 mb-2 mt-3">サウナ広さ:</p>
-     <h4 class="sauna_area col-5 mt-3"><%= @review.sauna_area_i18n %></h4>
+     <p class="sauna_area col-5 mt-3"><%= @review.sauna_area_i18n %></p>
     </div>
 
      <div class="row">
      <p class= "s col-4 ml-2 mb-4 mt-3">サウナ温度:</p>
-     <h5 class="sauna_ondo col-6 mt-3"><%=@review.sauna_temperature_i18n%></h5>
+     <p class="sauna_ondo col-6 mt-3"><%=@review.sauna_temperature_i18n%></p>
     </div>
 
      <div class="row">
      <p class= "s col-4 ml-2 mb-2">ロウリュ:</p>
-     <h4 class="sauna_area col-7"><%=@review.loryu_type_i18n%></h4>
+     <p class="sauna_area col-7"><%=@review.loryu_type_i18n%></p>
     </div>
 
     <div class="row">
      <p class= "s col-5 ml-2 mb-4 mt-3">アウフグース:</p>
-     <h4 class="sauna_area col-5 mt-3 mb-4"><%=@review.aufguss_i18n%></h4>
+     <p class="sauna_area col-5 mt-3 mb-4"><%=@review.aufguss_i18n%></p>
     </div>
-
-
   </div>
-  <div class=" card col-5 border border-info ml-3 mr-3 shadow rounded" style="background-color:#E0FFFF;">
-
+  <div class=" card col-md-5 border border-info shadow rounded m-2" style="background-color:#E0FFFF;">
    <h3 class="mizu mt-3">水風呂💧</h3>
 
-   <div class="row">
+    <div class="row">
      <p class= "s col-5 ml-2 mb-2 mt-4 mb-4">水風呂広さ:</p>
-     <h4 class="sauna_area col-5 mt-4 mb-4"><%=@review.water_area_i18n%></h4>
+     <p class="sauna_area col-5 mt-4 mb-4"><%=@review.water_area_i18n%></p>
     </div>
 
    <div class="row">
      <p class= "s col-4 ml-2 mb-4 mt-5">水風呂温度:</p>
-     <h4 class="mizu_ondo col-6 mt-5"><%=@review.water_temperature_i18n%></h4>
+     <p class="mizu_ondo col-6 mt-5"><%=@review.water_temperature_i18n%></p>
     </div>
 
    </div>
   </div>
 
    <div class="row">
-     <p class= "about_sub col-4 ml-5 mb-4 mt-5 text-right">住所:</p>
-     <h4 class=" col-7 mt-5"><%= @review.address %></h4>
+     <p class= "col-md-2 text-center">住所:</p>
+     <p class=" col-md-10"><%= @review.address %></p>
    </div>
 
-    <div class="row mr-5">
-     <p class= "about_sub col-12 ml-2 mb-4 text-right">料金:
+    <div class="row">
+     <p class= "col-md-12 mb-4 text-right">料金:
      ￥<%= @review.price %>円</p>
     </div>
 
-  <div class="card container">
+  <div class="card container border-dark">
    <div class="row mt-3">
-   <p class= "col-2 about_sub text-right">椅子の数:</p>
-   <p class="col-2"><%=@review.chair_count_i18n%></p>
-   <p class= "col-2 about_sub" style="font-size:14px;">入浴した時間帯:</p>
-   <p class= "col-2"><%=@review.sauna_time_i18n%></p>
-   <p class= "col-2 about_sub text-right">人の多さ:</p>
-   <p class= "col-2"><%=@review.congestion_i18n%></p>
+   <p class= "col-sm-2 text-center" style="background-color:#FFE4C4;">椅子の数</p>
+   <p class="col-sm-2 text-center"><%=@review.chair_count_i18n%></p>
+   <p class= "col-sm-2 text-center" style="background-color:#FFE4C4; font-size:14px;">入浴した時間帯</p>
+   <p class= "col-sm-2 text-center"><%=@review.sauna_time_i18n%></p>
+   <p class= "col-sm-2 text-center" style="background-color:#FFE4C4;">人の多さ</p>
+   <p class= "col-sm-2 text-center"><%=@review.congestion_i18n%></p>
     </div>
   </div>
 
-   <strong class= "ml-5 mb-2 mt-4 about_sub">[メモ]</strong>
+   <strong class= "ml-5 mb-2 mt-4">[メモ]</strong>
    <div class="card rounded mb-5 mx-auto" style="width:80%;">
-    <p class="mb-2 ml-4" style="font-size:20px;"><%=@review.body%></p>
+    <p class="mb-2 ml-4" style="font-size:15px;"><%=@review.body%></p>
    </div>
 
   <p class="text-right mr-5">[総合評価]</p>
@@ -117,7 +111,7 @@
     </div>
 
 </div>
-  <div class=" col-2  ml-3 mb-5 mt-5">
+  <div class=" col-md-2  ml-3 mb-5 mt-5">
   <p>ユーザー情報
    <%=link_to(@review.user)do%>
     <%=image_tag@review.user.get_profile_image(100,100), class: "rounded-circle"%><br>
