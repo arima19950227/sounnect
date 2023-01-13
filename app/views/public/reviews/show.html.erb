@@ -45,26 +45,28 @@
    </div>
   </div>
 
-   <div class="row">
+   <div class="row mt-3">
      <p class= "col-md-2 text-center">住所:</p>
      <p class=" col-md-10"><%= @review.address %></p>
    </div>
 
-    <div class="row">
-     <p class= "col-md-12 mb-4 text-right">料金:
+    <div id="map2"></div>
+
+   <div class="card container border-dark mt-3">
+    <div class="row mt-3">
+     <p class= "col-sm-2 text-center" style="background-color:#FFE4C4;">椅子の数</p>
+     <p class="col-sm-2 text-center"><%=@review.chair_count_i18n%></p>
+     <p class= "col-sm-2 text-center" style="background-color:#FFE4C4; font-size:14px;">入浴した時間帯</p>
+     <p class= "col-sm-2 text-center"><%=@review.sauna_time_i18n%></p>
+     <p class= "col-sm-2 text-center" style="background-color:#FFE4C4;">人の多さ</p>
+     <p class= "col-sm-2 text-center"><%=@review.congestion_i18n%></p>
+    </div>
+   </div>
+
+   <div class="row">
+     <p class= "col-md-12 mb-4 mt-2">料金:
      ￥<%= @review.price %>円</p>
     </div>
-
-  <div class="card container border-dark">
-   <div class="row mt-3">
-   <p class= "col-sm-2 text-center" style="background-color:#FFE4C4;">椅子の数</p>
-   <p class="col-sm-2 text-center"><%=@review.chair_count_i18n%></p>
-   <p class= "col-sm-2 text-center" style="background-color:#FFE4C4; font-size:14px;">入浴した時間帯</p>
-   <p class= "col-sm-2 text-center"><%=@review.sauna_time_i18n%></p>
-   <p class= "col-sm-2 text-center" style="background-color:#FFE4C4;">人の多さ</p>
-   <p class= "col-sm-2 text-center"><%=@review.congestion_i18n%></p>
-    </div>
-  </div>
 
    <strong class= "ml-5 mb-2 mt-4">[メモ]</strong>
    <div class="card rounded mb-5 mx-auto" style="width:80%;">
@@ -111,14 +113,53 @@
     </div>
 
 </div>
-  <div class=" col-md-2  ml-3 mb-5 mt-5">
-  <p>ユーザー情報
-   <%=link_to(@review.user)do%>
-    <%=image_tag@review.user.get_profile_image(100,100), class: "rounded-circle"%><br>
-    <%=@review.user.name%></p>
-   <%end%>
-     フォロー:　　<%=@review.user.followings.count%>人</br>
-     フォロワー:　<%= @review.user.followers.count %>人
+  <div class=" col-md-3 mb-5 mt-5 text-center">
+  <div class="row">
+   <p class="col-md-12">[ユーザー情報]</p>
+
+   <div class="col-md-12">
+    <%=link_to(@review.user)do%>
+     <%=image_tag @review.user.get_profile_image(100,100), class: "rounded-circle"%><br>
+     <%=@review.user.name%>
+    <%end%>
+   </div>
+
+     <p class="col-lg-12">フォロー:
+     <%=@review.user.followings.count%>人</p>
+     <p class="col-lg-12">フォロワー:
+     <%= @review.user.followers.count %>人</p>
+
+
+   </div>
   </div>
  </div>
 </div>
+
+<script>
+  function initMap(){
+    // 地図の位置情報(緯度・経度)を取得
+    let mapPosition = {lat: <%= @review.latitude || 0 %> , lng: <%= @review.longitude || 0 %> };
+    let map = new google.maps.Map(document.getElementById('map2'), {
+      zoom: 15,
+      center: mapPosition
+    });
+    let transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+
+    let contentString = '【住所】<%= @review.address %>';
+    let infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    let marker = new google.maps.Marker({
+      position: mapPosition,
+      map: map,
+      title: contentString
+    });
+
+    marker.addListener('click', function(){
+      infowindow.open(map, marker);
+    });
+  }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>

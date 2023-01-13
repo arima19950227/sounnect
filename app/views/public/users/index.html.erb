@@ -9,20 +9,22 @@
 <!--検索結果-->
  <% if @users.present? %>
   <!--検索がヒットした場合-->
-   <table class='table table-borderless container mb-0'>
-    <tbody class="row ml-5">
+   <div class='container mb-0'>
+    <div class="row">
       <% @users.each do |user| %>
-       <tr class="card rounded-circle col-3 mr-4 ml-5 mb-4" style="width:200px; height:280px;">
-        <td class="mx-auto"><%= image_tag user.get_profile_image(100,100), class: "rounded-circle mt-3" %></td>
-        <td class="text-center pb-0"><%= link_to user.name, user_path(user.id), class: "text-dark" %>さん</td>
-        <td class="text-center">フォロー:　<%=user.followings.count%>人</br>
-          フォロワー:　<%= user.followers.count %>人</td>
-       </tr>
+       <div class="card shadow rounded-top col-md-12 mb-4">
+        <div class="row">
+        <div class="col-md-3 text-center"><%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %></div>
+        <div class="col-md-3 mt-4 text-center"><%= link_to user.name, user_path(user.id), class: "text-info" %>さん</div>
+        <div class="col-md-3 mt-4 text-center">フォロー:　<%=user.followings.count%>人</div>
+        <div class="col-md-3 mt-4 mb-2 text-center">フォロワー:　<%= user.followers.count %>人</div>
+       </div>
+       </div>
       <% end %>
  <% else %>
   <!--検索がヒットしなかった場合-->
   <p>検索結果はありません</p>
 <% end %>
-  </tbody>
- </table>
+  </div>
+ </div>
 </div>
