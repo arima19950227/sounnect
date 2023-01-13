@@ -1,15 +1,4 @@
 <div class="user_index">
  <h1 class="text-center pt-5 about_sub mb-5">フォローリスト</h1>
-  <table class='table table-borderless container mb-0'>
- <tbody class="row ml-5">
-  <% @users.each do |user| %>
-  <tr class="card rounded-circle col-3 mr-4 ml-5 mb-5" style="width:200px; height:280px;">
-    <td class="mx-auto"><%= image_tag user.get_profile_image(100,100), class: "rounded-circle mt-3" %></td>
-   <td class="text-center pb-0"><%= link_to user.name, user_path(user.id), class: "text-dark" %>さん</td>
-   <td class="text-center">フォロー:　<%=user.followings.count%>人</br>
-   フォロワー:　<%= user.followers.count %>人</td>
-  </tr>
-   <% end %>
- </tbody>
-</table>
+  <%= render "follow", users: @users %>
 </div>
