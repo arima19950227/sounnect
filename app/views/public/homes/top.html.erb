@@ -1,18 +1,19 @@
-
-  <div class="card border border-dark">
-   <%= image_tag 'sauna_top3.jpg', class: "card-img" %>
-    <div class="card-img-overlay">
+  <div class="card row">
+    <%= image_tag 'sauna_top3.jpg', class: "col-sm-12"%>
       <div><%= flash[:notice] %></div>
+      <div class="card-img-overlay col-12">
        <%= render 'font'%>
-       <p class="text1">Saunnect</p>
-        <div class="col-6 pt-2 pb-2 box" style="background-color:rgba(255,255,254,0.5);">
-           <h4 class="text3 text-center">サウナーの皆様へ</h4>
-              <p class="text-center text2">
+       <p class="text1 col-sm-12">Saunnect</p>
+       <div class="row">
+        <div class="col-sm-6 pt-2 pb-2" style="background-color:rgba(255,255,254,0.5);">
+           <p class="text3 col-sm-12 text-center about_title m-0">サウナーの皆様へ</p>
+              <p class="text-center text2 m-0 col-12">
                 このサイトは、サウナのレビューサイトになります。<br>
                 サウナレビューの閲覧や投稿をするには無料会員登録が必要になります。
               </p>
+          </div>
         </div>
-    </div>
+   </div>
   </div>
  <h3 class="row-12 mt-5 text-center">
   <strong>新着レビュー</strong>

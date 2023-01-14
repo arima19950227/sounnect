@@ -43,7 +43,7 @@ main {
   overflow: hidden;
   color: white;
   font-family: 'Josefin Sans', sans-serif;
-  margin-top: 90px;
+  margin-top: 160px;
   margin-left: 60px;
 }
 
@@ -334,14 +334,14 @@ main {
 
 
 @media screen and (max-width:1024px) {
-  .text1{
-   font-size: 100px;
- }
+
   .title {
+    margin-top:90px;
     font-size: 30px;
   }
-  .text2 {
-    font-size: 5px;
+
+  .text1 {
+    font-size: 100px;
   }
 
   .about_connect {
@@ -373,14 +373,18 @@ main {
 }
 
 @media screen and (max-width:768px){
-  .text1{
-   font-size: 70px;
- }
+
   .title {
-    font-size: 20px;
+    margin-top:60px;
+    font-size: 30px;
   }
-  .text3 {
-    font-size: 15px;
+
+  .text1 {
+    font-size: 70px;
+  }
+
+  .text2 {
+    font-size: 13px;
   }
 
   .about_connect {
@@ -396,29 +400,26 @@ main {
   }
 
 @media screen and (max-width:425px) {
-  .text1{
-   font-size: 40px;
- }
+
    .title {
-    font-size: 17px;
-    margin-top: 15px;
+    margin-top:20px;
     margin-left: 10px;
+    font-size: 17px;
   }
 
-   .text3 {
-    font-size: 3px;
-
+  .text1 {
+    font-size: 40px;
   }
 
   .text2 {
-    font-size: 0.1rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: clip;
+    font-size: 6px;
   }
-  .box {
-    height: 60px;
+
+  .text3 {
+    font-size: 13px;
   }
+
+
   .top_title{
     font-size: 3px;
   }
@@ -458,12 +459,23 @@ main {
 }
 
 @media screen and (max-width:375px) {
-   .text1{
-   font-size: 30px;
- }
+
    .title {
+    font-size: 13px;
+  }
+
+  .text1 {
+    font-size: 30px;
+  }
+
+  .text2 {
+    font-size: 3px;
+  }
+
+  .text3 {
     font-size: 10px;
-   }
+  }
+
 
    .top1 {
      text-align: center;
