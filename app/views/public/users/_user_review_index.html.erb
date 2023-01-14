@@ -1,61 +1,62 @@
-      <% reviews.each do |review| %>
-       <div class="card shadow rounded-top mb-5 mt-5 p-0 timeline">
-        <div class="card-body row">
-         <%= image_tag review.get_sauna_image(700,700), class: "sauna_image col-6" %>
-         <div id="map-<%=review.id%>" class="col-6"></div>
-          <p class="col-12"><%= link_to review.name,review_path(review.id), class: "review_name" %></p>
+<% reviews.each do |review| %>
+ <div class="card shadow rounded-top mb-5 mt-5 p-0 timeline">
+  <div class="card-body row">
+  <%= image_tag review.get_sauna_image(700,700), class: "sauna_image col-6" %>
+   <div id="map-<%=review.id%>" class="col-6"></div>
+    <p class="col-12"><%= link_to review.name,review_path(review.id), class: "review_name" %></p>
 
-          <p class="col-12 sub">住所:
-         　　<%= review.address %>
-          </p>
+    <p class="col-12 sub">住所:
+    　<%= review.address %>
+    </p>
 
-          <p class="col-12 sub">大人一人当たりの金額:
-       　　¥<%= review.price %>円
-          </p>
+    <p class="col-12 sub">大人一人当たりの金額:
+      ¥<%= review.price %>円
+    </p>
 
-         <p class="col-12 sub">[総合評価]</p>
-         <p class="col-6 raty" id="post_raty<%= review.id %>"></p>
-         <div class="col-6">
-           <p class="text-right mr-2"><%= image_tag review.user.get_profile_image(50,50), class: "rounded-circle" %></br>
-             投稿者:<%= review.user.name %>さん
-           </p>
-         </div>
-           <script>
-            $(function(){
-              console.log($('#post_raty<%= review.id %>'));
-            $('#post_raty<%= review.id %>').empty();
-            $('#post_raty<%= review.id %>').raty({
-              //星画像の指定などのオプションをここに記述,
-               size     : 36,
-               starOff:  '<%= asset_path('star-off.png') %>',
-               starOn : '<%= asset_path('star-on.png') %>',
-               starHalf: '<%= asset_path('star-half.png') %>',
-               score: <%= review.evaluation %>,
-               readOnly: true,
-                half: true,
-                  });
-                 })
-           </script>
-         </div>
-       </div>
-        <% end %>
-        <%= paginate reviews %>
+    <p class="col-12 sub">[総合評価]</p>
+    <p class="col-6 raty" id="post_raty<%= review.id %>"></p>
+    <div class="col-6">
+     <p class="text-right mr-2"><%= image_tag review.user.get_profile_image(50,50), class: "rounded-circle" %></br>
+       投稿者:<%= review.user.name %>さん
+     </p>
+    </div>
+
+    <script>
+     $(function(){
+       console.log($('#post_raty<%= review.id %>'));
+     $('#post_raty<%= review.id %>').empty();
+     $('#post_raty<%= review.id %>').raty({
+       //星画像の指定などのオプションをここに記述,
+        size     : 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        score: <%= review.evaluation %>,
+        readOnly: true,
+         half: true,
+       });
+      })
+    </script>
+  </div>
+ </div>
+<% end %>
+<%= paginate reviews %>
 
 <script>
-function initMap(){
- <% @reviews.each do |review| %>
- createMap(document.getElementById('map-<%=review.id%>'), <%= review.latitude || 0 %>, <%= review.longitude || 0 %>, "<%= review.address %>");
- <% end %>
-}
+ function initMap(){
+  <% @reviews.each do |review| %>
+  createMap(document.getElementById('map-<%=review.id%>'), <%= review.latitude || 0 %>, <%= review.longitude || 0 %>, "<%= review.address %>");
+  <% end %>
+ }
 
-function createMap(element, latitude, longitude, address)
-{
-// 地図の位置情報(緯度・経度)を取得
- let mapPosition = {lat: latitude , lng: longitude };
- let map = new google.maps.Map(element, {
-  zoom: 15,
-  center: mapPosition
-    });
+ function createMap(element, latitude, longitude, address)
+ {
+  // 地図の位置情報(緯度・経度)を取得
+  let mapPosition = {lat: latitude , lng: longitude };
+  let map = new google.maps.Map(element, {
+   zoom: 15,
+   center: mapPosition
+     });
   let transitLayer = new google.maps.TransitLayer();
   transitLayer.setMap(map);
 

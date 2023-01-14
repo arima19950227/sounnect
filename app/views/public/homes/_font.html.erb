@@ -17,17 +17,17 @@
 
 
 <script>
-$(document).on('turbolinks:load', function() {
- const CLASSNAME = "-visible";
- const TIMEOUT = 1500;
- const $target = $(".title");
+ $(document).on('turbolinks:load', function() {
+   const CLASSNAME = "-visible";
+   const TIMEOUT = 1500;
+   const $target = $(".title");
 
 
-  setInterval(() => {
-  $target.addClass(CLASSNAME);
-  setTimeout(() => {
-    $target.removeClass(CLASSNAME);
-  }, TIMEOUT);
- }, TIMEOUT * 2);
+   setInterval(() => {
+    $target.addClass(CLASSNAME);
+    setTimeout(() => {
+     $target.removeClass(CLASSNAME);
+     }, TIMEOUT);
+    }, TIMEOUT * 2);
 });
 </script>

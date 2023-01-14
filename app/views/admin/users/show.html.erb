@@ -1,4 +1,3 @@
-
 <div><%= flash[:notice] %></div>
 
 <div class="container">
@@ -26,7 +25,6 @@
       ユーザーステータス：<p class="text-success">有効</p>
      <% end %>
     </div>
-
     <div class="container mt-3">
       <div class="row">
           <%= link_to edit_admin_user_path(@user), class: "btn btn-sm btn-info btn-block  mb-3" do %>
@@ -40,9 +38,9 @@
         <h3 class="about_sub"><%= @user.name %>さんの投稿</h3>
      <% if @reviews.present? %>
       <% @reviews.each do |review| %>
-       <div class="card container shadow rounded-top mb-5 mt-5 p-0" style="width:700px; height:500px;">
-         <%= image_tag review.get_sauna_image(700,700), class: "sauna_image" %>
-         <div class="card-body row-6">
+       <div class="card container shadow rounded-top mb-5 mt-5 p-0">
+         <div class="card-body row">
+          <%= image_tag review.get_sauna_image(700,700), class: "sauna_image" %>
           <p class="col-12"><%= link_to review.name,admin_review_path(review.id), class: "review_name" %></p>
 
           <p class="col-12">住所:
@@ -54,7 +52,7 @@
           </p>
 
          [総合評価]
-          <p class="col-12 mt-3 ml-4" id="post_raty<%= review.id %>"></p>
+          <p class="col-6 mt-3 ml-4" id="post_raty<%= review.id %>"></p>
            <script>
             $(function(){
               console.log($('#post_raty<%= review.id %>'));
@@ -72,11 +70,9 @@
                  })
            </script>
          </div>
-         <div class="card-body row-6">
-           <p class="text-right mb-5"><%= image_tag review.user.get_profile_image(50,50), class: "rounded-circle" %></br>
+           <p class="col-6"><%= image_tag review.user.get_profile_image(50,50), class: "rounded-circle" %></br>
              投稿者:<%= review.user.name %>さん
            </p>
-         </div>
        </div>
         <% end %>
         <%= paginate @reviews %>

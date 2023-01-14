@@ -1,4 +1,4 @@
- <% if review.errors.any? %>
+<% if review.errors.any? %>
   <%= review.errors.count %>件のエラーが発生しました
   <ul>
     <% review.errors.full_messages.each do |message| %>
@@ -6,26 +6,28 @@
     <% end %>
   </ul>
 <% end %>
- <%= form_with model: review, local:true do |f| %>
+
+<%= form_with model: review, local:true do |f| %>
      <div class=" card container shadow rounded-top mb-5 mt-5">
-      <div class="form-group row mt-4">
+       <div class="form-group row mt-4">
         <%= f.label "施設名:", class: 'col-md-4 mr-3 list' %>
         <%= f.text_field :name, class: "form-control name col-md-5 form_new" %>
-      </div>
-      <div class="form-group row">
+       </div>
+
+       <div class="form-group row">
         <%= f.label "住所:", class: 'col-md-4 mr-3 list' %>
         <%= f.text_field :address, placeholder: "◯◯県◯◯市/郡◯◯/区/町/村/番地", class: "form-control col-md-5 form_new" %>
-      </div>
+       </div>
 
-      <div class="form-group row">
+       <div class="form-group row">
         <%= f.label "利用料金:",class: 'col-md-4 mr-3 list' %>
         <%= f.text_field :price, placeholder: "大人1名あたり", class: "form-control col-md-2 text-right form_new" %>円
-      </div>
+       </div>
 
-      <div class="form-group row">
+       <div class="form-group row">
         <%= f.label "サウナの広さ:", class: 'col-md-4 mr-3 list' %>
         <p class="col-md-6"><%= f.collection_radio_buttons :sauna_area, Review.sauna_areas_i18n, :first , :last, class: "form-control" %></p>
-      </div>
+       </div>
 
        <div class="form-group row">
          <%= f.label "サウナの温度:", class: 'col-md-4 mr-3 list'%>
@@ -42,7 +44,7 @@
          <p class="col-md-6"><%= f.collection_radio_buttons :aufguss, Review.aufgusses_i18n, :first , :last, class: "form-control" %></p>
        </div>
 
-        <div class="form-group row">
+       <div class="form-group row">
          <%= f.label "水風呂の広さ:", class: 'col-md-4 mr-3 list' %>
          <p class="col-md-6"><%= f.collection_radio_buttons :water_area, Review.water_areas_i18n, :first , :last, class: "form-control" %></p>
        </div>
@@ -72,18 +74,24 @@
          <%= f.file_field :sauna_image, class: "form-control-file user_image col-md-8", accept: 'image/*' %>
         </div>
        </div>
+
        <div class="form-group row">
          <%= f.label "感想・詳細など", class: "list"%>
          <%= f.text_area :body, size: "5x6", class: "form-control" %>
-        </div>
+       </div>
 
        <div class="form-group row">
-
         <p class="list mr-2">[星評価]</p>
         <div id="post_raty">
          <%= f.hidden_field :evaluation, id: :review_star %>
         </div>
-        <%#= javascript_include_tag 'jquery.raty.js' %>
+       </div>
+
+        <div>
+         <p class="text-right"><%= f.submit "投稿する", class: 'btn btn-info' %></p>
+        </div>
+<% end %>
+
         <script>
           // scriptファイルをどのidの部分に配置するかを指定
           // let elem = document.querySelector('#post_raty');
@@ -101,13 +109,3 @@
            });
           })
          </script>
-        </div>
-        <div>
-         <p class="text-right"><%= f.submit "投稿する", class: 'btn btn-info' %></p>
-        </div>
-     <% end %>
-    </div>
-  </div>
-</div>
-
-
