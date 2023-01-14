@@ -104,12 +104,15 @@
     <% end %>
    </div>
 
-   <p class="ml-5 mt-5">コメント一覧:</p>
-    <div class= "comment_area mx-auto mb-4" style="width:80%">
-      <p class="comment_area"><%= render 'public/comments/comment', review: @review %></p>
+  <div class="row">
+   <p class="col-md-12 ml-5 mt-5">コメント一覧:</p>
+    <div class= "mx-auto mb-4 col-md-12">
+      <%= render 'public/comments/comment', review: @review %>
     </div>
-   <p class="ml-5 mt-5">コメントを送る</p>
-    <div>
+  </div>
+
+  <div class="row">
+   <p class="col-md-12 mt-5">コメントを送る</p>
       <%= render 'public/comments/form', review: @review, comment: @comment %>
     </div>
   </div>
