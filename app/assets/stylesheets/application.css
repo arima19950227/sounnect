@@ -103,8 +103,6 @@ main {
    font-family: 'Kalam', cursive;
    color: black;
    -webkit-text-stroke: 1px white;
-
-
 }
 
 .b {
@@ -131,7 +129,6 @@ main {
    width: 300px;
    height: 250px;
    margin: 40px auto;
-
 }
 
 .about_title {
@@ -163,7 +160,6 @@ main {
 
 .sauna_image{
   width:100%;
-
 }
 
 .x {
@@ -297,7 +293,7 @@ main {
 .head_foot {
   background-image: url(header2.jpeg);
   background-size: cover;
- }
+}
 
  .admin_top {
    height:700px;
@@ -368,8 +364,6 @@ main {
   .sub {
     font-size: 15px;
   }
-
-
 }
 
 @media screen and (max-width:768px){
@@ -455,7 +449,6 @@ main {
  .review_name2 {
    font-size: 28px;
  }
-
 }
 
 @media screen and (max-width:375px) {
@@ -481,7 +474,8 @@ main {
      text-align: center;
    }
 
-   .actions{
+   .actions {
    margin-left: 200px;
+   }
  }
 }
