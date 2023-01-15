@@ -6,17 +6,17 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
   <div class="field row">
-    <%= f.label "メールアドレス", class: "col-4 text-right mb-4 mt-5 about_sub" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "col-4 mb-4 mt-5" %>
+    <%= f.label "メールアドレス", class: "col-sm-4 text-sm-right mb-4 mt-5 " %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "col-sm-4 mb-4 mt-sm-5" %>
   </div>
 
   <div class="field row">
-    <%= f.label "パスワード", class: "col-4 text-right mb-4 about_sub" %><br />
-    <%= f.password_field :password, autocomplete: "current-password",class: "col-4 mb-4" %>
+    <%= f.label "パスワード", class: "col-sm-4 text-sm-right mb-4" %><br />
+    <%= f.password_field :password, autocomplete: "current-password",class: "col-sm-4 mb-4" %>
   </div>
 
   <div class="actions row">
-    <%= f.submit "ログイン",class: "btn btn-success" %>
+    <%= f.submit "ログイン",class: "btn btn-success mb-3" %>
   </div>
 <% end %>
 <p>登録がお済みでない方は<%= link_to "こちら", new_user_registration_path, class:'text-info' %>から新規登録を行なってください。</p>

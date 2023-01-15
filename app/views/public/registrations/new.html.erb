@@ -6,28 +6,28 @@
   <%= render "public/shared/error_messages", resource: resource %>
 
   <div class="field row">
-    <%= f.label "ユーザー名:", class: "col-4 text-right mb-4 mt-5 about_sub" %>
-    <%= f.text_field :name, autofocus: true, autocomplete: "name",class: "col-2 mb-4 mt-5" %>
+    <%= f.label "ユーザー名:", class: "col-sm-4 text-sm-right mb-4 mt-5" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name",class: "col-sm-2 mb-4 mt-sm-5" %>
   </div>
 
   <div class="field row">
-    <%= f.label "電話番号:", class: "col-4 text-right mb-4 about_sub" %><br />
-    <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number",class: "col-2 mb-4" %>
+    <%= f.label "電話番号:", class: "col-sm-4 text-sm-right mb-4" %><br />
+    <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number",class: "col-sm-2 mb-4" %>
   </div>
 
   <div class="field row">
-    <%= f.label "メールアドレス:", class: "col-4 text-right mb-4 about_sub" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "col-4 mb-4" %>
+    <%= f.label "メールアドレス:", class: "col-sm-4 text-sm-right mb-4" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "col-sm-4 mb-4" %>
   </div>
 
   <div class="field row">
-    <%= f.label "パスワード(半角英数字6文字以上):", class: "col-4 text-right mb-4 about_sub" %><br />
-    <%= f.password_field :password, autocomplete: "new-password",class: "col-4 mb-4" %>
+    <%= f.label "パスワード(半角英数字6文字以上):", class: "col-sm-4 text-sm-right mb-4" %><br />
+    <%= f.password_field :password, autocomplete: "new-password",class: "col-sm-4 mb-4" %>
   </div>
 
   <div class="field row">
-    <%= f.label "パスワード(再確認):", class: "col-4 text-right mb-4 about_sub" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "col-4 mb-4" %>
+    <%= f.label "パスワード(再確認):", class: "col-sm-4 text-sm-right mb-4" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "col-sm-4 mb-4" %>
   </div>
 
   <div class="actions row">
