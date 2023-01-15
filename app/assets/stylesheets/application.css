@@ -308,10 +308,6 @@ main {
    margin-left: 100px;
  }
 
- .actions{
-   margin-left: 650px;
- }
-
  .login {
    text-align: center;
  }
@@ -347,10 +343,6 @@ main {
   .about_info {
     margin-left: 50px;
   }
-
-  .actions{
-   margin-left: 500px;
- }
 
   .timeline {
    /*height: 400px;*/
@@ -428,10 +420,6 @@ main {
     margin-right: 50px;
   }
 
-  .actions{
-   margin-left: 300px;
- }
-
  .list {
    text-align: left;
  }
@@ -473,10 +461,6 @@ main {
 
    .top1 {
      text-align: center;
-   }
-
-   .actions {
-   margin-left: 200px;
    }
  }
 }
