@@ -31,13 +31,13 @@
        <tbody>
         <% @reviews.each do |review| %>
         <tr>
-         <td class="col-2 mt-4 mb-5"><%= image_tag review.get_sauna_image(150,150) %><td>
+         <td class="col-sm-2 mt-4 mb-5"><%= image_tag review.get_sauna_image(150,150) %><td>
          <% if user_signed_in? %>
            <%= link_to review.name,review_path(review.id), class: 'text-info' %>
          <% else %>
            <%= link_to review.name, new_user_session_path, class: 'text-info' %>
          <% end %>
-         <td class="col-4" style= "font-size:14px;">
+         <td class="col-sm-4" style= "font-size:14px;">
           <%= review.address %>
          </td>
         </tr>
