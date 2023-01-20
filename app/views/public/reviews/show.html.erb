@@ -74,8 +74,10 @@
     <p class="mb-2 ml-4" style="font-size:15px;"><%=@review.body%></p>
    </div>
 
-   <p class="text-right mr-5">[総合評価]</p>
-   <div id="post_raty<%= @review.id %>" class="text-right mr-3"></div>
+   <div class="row">
+    <div class="col-sm-12 text-right pr-5">[総合評価]</div>
+    <div id="post_raty<%= @review.id %>" class="col-sm-12 text-right"></div>
+   </div>
    <script>
     $(function(){
      console.log($('#post_raty<%= @review.id %>'));
@@ -93,9 +95,11 @@
         })
    </script>
 
-   <p class="mb-2 view_count">閲覧数: <i class="bi bi-eyeglasses"></i>　<%= @review.view_counts.count %></p>
-   <p id= "favorite_buttons_<%= @review.id %>">
-    <%= render 'public/favorites/favorites', review: @review %></p>
+   <div class="row">
+     <p class="mb-2 col-sm-12">閲覧数: 👀<%= @review.view_counts.count %></p>
+     <p id= "favorite_buttons_<%= @review.id %>">
+     <%= render 'public/favorites/favorites', review: @review %></p>
+   </div>
 
    <div>
     <% if @review.user == current_user %>

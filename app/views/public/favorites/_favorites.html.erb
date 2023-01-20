@@ -1,10 +1,10 @@
 <% if review.favorited_by?(current_user) %>
 
-   <%= link_to review_favorites_path(review), class: 'text-dark fav', method: :delete, remote: true do %>
-    　　いいね:<i class="bi bi-emoji-heart-eyes-fill text-danger ml-2"></i>　<%= review.favorites.count %>
+   <%= link_to review_favorites_path(review), class: 'text-dark col-sm-12', method: :delete, remote: true do %>
+    いいね:<i class="bi bi-emoji-heart-eyes-fill text-danger ml-2"></i><%= review.favorites.count %>
     <% end %>
    <% else %>
-     <%= link_to review_favorites_path(review), class: "text-dark fav", method: :post, remote: true do %>
-     　　いいね:<i class="bi bi-emoji-heart-eyes text-danger ml-2"></i>　<%= review.favorites.count %>
+     <%= link_to review_favorites_path(review), class: "text-dark col-sm-12", method: :post, remote: true do %>
+     いいね:<i class="bi bi-emoji-heart-eyes text-danger ml-2"></i><%= review.favorites.count %>
     <% end %>
 <% end %>
