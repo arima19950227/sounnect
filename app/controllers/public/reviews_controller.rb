@@ -68,11 +68,13 @@ class Public::ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
-    @review.user_id = current_user.id
-    @review.destroy
-    flash[:notice] = "投稿を削除しました"
-    redirect_to reviews_path
-
+    if @review.user_id = current_user.id
+       @review.destroy
+       flash[:notice] = "投稿を削除しました"
+      redirect_to reviews_path
+    else
+      redirect_to reviews_path
+    end
   end
 
 

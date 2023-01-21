@@ -51,6 +51,11 @@ class Public::UsersController < ApplicationController
 
   def edit
    @user = User.find(params[:id])
+   if @user.id == current_user.id
+     render "edit"
+   else
+    redirect_to user_path(@user)
+   end
 
   end
 
@@ -66,6 +71,12 @@ class Public::UsersController < ApplicationController
 
   def unsubscribe
      @user = User.find(params[:id])
+     if @user.id == current_user.id
+      render "unsubscribe"
+     else
+      redirect_to user_path(@user)
+     end
+
   end
 
   def withdraw
