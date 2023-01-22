@@ -108,16 +108,21 @@
     <% end %>
    </div>
 
-  <div class="row">
-   <p class="col-md-12 ml-5 mt-5">コメント一覧:</p>
-    <div class= "mx-auto mb-4 col-md-12 comment_area">
+   <div class="row">
+    <p class="col-md-12 ml-5 mt-5">コメント一覧:</p>
+     <div class= "mx-auto mb-4 col-md-12 comment_area">
       <%= render 'public/comments/comment', review: @review %>
-    </div>
-  </div>
+     </div>
+   </div>
 
-  <div class="row">
-   <p class="col-md-12 mt-5">コメントを送る</p>
+   <div class="row">
+    <p class="col-md-12 mt-5">コメントを送る</p>
       <%= render 'public/comments/form', review: @review, comment: @comment %>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mb-3">
+       <%= link_to "<一覧へ戻る", reviews_path, class: "btn btn-sm btn-link" %>
+      </div>
     </div>
   </div>
 
