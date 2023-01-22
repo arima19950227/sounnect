@@ -20,7 +20,7 @@
    <h3 class="col-sm-12 mt-5">新着レビュー</h3>
     <div class="card col-sm-7 mt-4 mb-5  shadow-lg rounded">
         <% @reviews.each do |review| %>
-        <div class="row border border-bottom">
+        <div class="row border-top">
          <div class="col-sm-4 mt-4 mb-sm-5">
           <%= image_tag review.get_sauna_image(150,150) %>
          </div>
@@ -36,13 +36,15 @@
          </div>
          </div>
         <% end %>
-         <div style="text-align:right;">
+        <div class="row">
+         <div class="col-sm-12 text-right">
           <% if user_signed_in? %>
            <%= link_to "レビューの一覧を見る＞", reviews_path, class: 'text-dark' %>
           <% else %>
            <%= link_to "レビューの一覧を見る＞", new_user_session_path, class: 'text-dark' %>
           <% end %>
           </div>
+         </div>
   </div>
 
    <div class="col-sm-4 ml-sm-5 mt-4 mb-5" style="border:none;">
