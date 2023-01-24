@@ -35,6 +35,10 @@ main {
   -webkit-text-fill-color: transparent;
   text-shadow:0 0 30px #FFA73D;
   -webkit-text-stroke: 1px #FFF;
+  animation-name: fadeInAnime;
+  animation-duration:3s;
+  animation-fill-mode:forwards;
+  opacity: 0;
 
 }
 
