@@ -1,5 +1,4 @@
 class Public::UsersController < ApplicationController
-
   before_action :search
 
   def index
@@ -13,24 +12,24 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-    #レコードからユーザー1人1人の情報を持ってくる
+    # レコードからユーザー1人1人の情報を持ってくる
     @user = User.find(params[:id])
-    #roomがcreateされた時に、現在ログインしているユーザーと、
-    #「チャットへ」を押されたユーザーの両方をEntriesテーブルに記録する必要があるので、
-    #whereメソッドでそのユーザーを探している
-    @currentUserEntry=Entry.where(user_id: current_user.id)
-    @userEntry=Entry.where(user_id: @user.id)
+    # roomがcreateされた時に、現在ログインしているユーザーと、
+    # 「チャットへ」を押されたユーザーの両方をEntriesテーブルに記録する必要があるので、
+    # whereメソッドでそのユーザーを探している
+    @currentUserEntry = Entry.where(user_id: current_user.id)
+    @userEntry = Entry.where(user_id: @user.id)
 
-    #showページのユーザーが現在ログインしているユーザーではないというunlessの条件
+    # showページのユーザーが現在ログインしているユーザーではないというunlessの条件
     unless @user.id == current_user.id
       @currentUserEntry.each do |cu|
-      @userEntry.each do |u|
-      #roomsが作成されている場合と作成されていない場合に条件分岐
-        if cu.room_id == u.room_id then
-          @isRoom = true
-          @roomId = cu.room_id
-        end
-      end
+       @userEntry.each do |u|
+         # roomsが作成されている場合と作成されていない場合に条件分岐
+         if cu.room_id == u.room_id then
+           @isRoom = true
+           @roomId = cu.room_id
+         end
+       end
      end
       if @isRoom
       else
@@ -39,28 +38,26 @@ class Public::UsersController < ApplicationController
       end
     end
 
-  if @user.id == current_user.id
-    user_ids = current_user.following_ids # フォローしているユーザーのid一覧
-    user_ids.push(current_user.id)  # 自身のidを一覧に追加する
-    @reviews = Review.where(user_id: user_ids).page(params[:page]).order(created_at: :desc)
-  else
-     @reviews = Review.where(user_id: [@user.id]).page(params[:page]).order(created_at: :desc)
-  end
-
+    if @user.id == current_user.id
+      user_ids = current_user.following_ids # フォローしているユーザーのid一覧
+      user_ids.push(current_user.id)  # 自身のidを一覧に追加する
+      @reviews = Review.where(user_id: user_ids).page(params[:page]).order(created_at: :desc)
+    else
+      @reviews = Review.where(user_id: [@user.id]).page(params[:page]).order(created_at: :desc)
+    end
   end
 
   def edit
-   @user = User.find(params[:id])
-   if @user.id == current_user.id
-     render "edit"
-   else
-    redirect_to user_path(@user)
-   end
-
+    @user = User.find(params[:id])
+    if @user.id == current_user.id
+      render "edit"
+    else
+      redirect_to user_path(@user)
+    end
   end
 
   def update
-     @user = User.find(params[:id])
+    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "ユーザー情報更新"
       redirect_to user_path(@user)
@@ -70,13 +67,12 @@ class Public::UsersController < ApplicationController
   end
 
   def unsubscribe
-     @user = User.find(params[:id])
-     if @user.id == current_user.id
+    @user = User.find(params[:id])
+    if @user.id == current_user.id
       render "unsubscribe"
-     else
+    else
       redirect_to user_path(@user)
-     end
-
+    end
   end
 
   def withdraw
@@ -91,5 +87,4 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
   end
-
 end
